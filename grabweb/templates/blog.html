@@ -1,0 +1,97 @@
+{% extends "dashboardmaster.html" %}
+{% block title %}
+  GrabWebHost -Blog
+{% endblock %}
+{% block content %}
+<div class="border-bottom-2 py-32pt position-relative z-1">
+    <div class="container-fluid page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+        <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+
+            <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                <h2 class="mb-0">Blog</h2>
+
+                <ol class="breadcrumb p-0 m-0">
+                    <li class="breadcrumb-item"><a href="">Home</a></li>
+
+                    <li class="breadcrumb-item active">
+
+                        Blogs
+
+                    </li>
+
+                </ol>
+
+            </div>
+
+           
+
+        </div>
+
+        <div class="row" role="tablist">
+            <div class="col-auto d-flex flex-column">
+                <h6 class="m-0">{{len1}}</h6>
+                <p class="text-50 mb-0 d-flex align-items-center">
+                    Total Blogs
+                    <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_up</i>
+                </p>
+            </div>
+            
+            <div class="col-auto border-left">
+                <a href="" class="btn btn-accent">Login Logs</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid page__container">
+    <div class="page-section">
+
+        
+
+        
+
+        <div class="page-separator">
+            <div class="page-separator__text">Blog</div>
+        </div>
+
+        <div class="row">
+            {% for i in post %}
+
+            <div class="col-sm-6 col-md-4">
+                <div class="card posts-card-popular">
+                    <img src="/media/{{i.blogimage}}" alt="" class="card-img">
+                    <div class="posts-card-popular__content">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="avatar-group flex">
+                                <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="GrabWebHost">
+                                    <a href="#"><img src="/media/default.png/" alt="Avatar" class="avatar-img rounded-circle"></a>
+                                </div>
+                            </div>
+                            <a style="text-decoration: none;" class="d-flex align-items-center" href="#"></a>
+                        </div>
+                        <div class="posts-card-popular__title card-body">
+                            <small class="text-muted text-uppercase">blog</small>
+                            <h4 class="card-title m-0"><a href="#">{{i.blogtitle}}</a></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+           
+
+            
+
+        </div>
+
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html lang="en" class="" id="drkmodestatus"  dir="ltr">
+    <!-- class="dark-mode" -->
+
+    
+<head>
+    <link rel="icon" href="/static/images/gbl.png" type="image/png" sizes="24x16">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible"
+              content="IE=edge">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}{% endblock %}</title>
+
+     
+        <meta name="robots"
+              content="noindex">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7COswald:300,400,500,700%7CRoboto:400,500%7CExo+2:600&amp;display=swap"
+              rel="stylesheet">
+
+        <!-- Perfect Scrollbar -->
+        <link type="text/css"
+              href="/static/assets/vendor/perfect-scrollbar.css"
+              rel="stylesheet">
+
+        <!-- Material Design Icons -->
+        <link type="text/css"
+              href="/static/assets/css/material-icons.css"
+              rel="stylesheet">
+<style>
+    .float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+</style>
+        <!-- Font Awesome Icons -->
+        <link type="text/css"
+              href="/static/assets/css/fontawesome.css"
+              rel="stylesheet">
+
+        <!-- Preloader -->
+        <link type="text/css"
+              href="/static/assets/vendor/spinkit.css"
+              rel="stylesheet">
+        <link type="text/css"
+              href="/static/assets/css/preloader.css"
+              rel="stylesheet">
+
+        <!-- App CSS -->
+        <link type="text/css"
+              href="/static/assets/css/app.css"
+              rel="stylesheet">
+
+        <!-- Dark Mode CSS (optional) -->
+        <link type="text/css"
+              href="/static/assets/css/dark-mode.css"
+              rel="stylesheet">
+
+        <!-- Vector Maps -->
+        <link type="text/css"
+              href="/static/assets/vendor/jqvmap/jqvmap.min.css"
+              rel="stylesheet">
+              
+
+    </head>
+
+    <body class="layout-boxed layout-sticky-subnav ">
+
+        <!--<div class="preloader">-->
+        <!--    <div class="sk-chase">-->
+        <!--        <div class="sk-chase-dot"></div>-->
+        <!--        <div class="sk-chase-dot"></div>-->
+        <!--        <div class="sk-chase-dot"></div>-->
+        <!--        <div class="sk-chase-dot"></div>-->
+        <!--        <div class="sk-chase-dot"></div>-->
+        <!--        <div class="sk-chase-dot"></div>-->
+        <!--    </div>-->
+
+         
+        <!--</div>-->
+
+        <div class="mdk-drawer-layout js-mdk-drawer-layout"
+             data-push
+             data-responsive-width="992px">
+            <div class="mdk-drawer-layout__content page-content">
+
+                <!-- Header -->
+
+                <div class="navbar navbar-expand navbar-shadow px-0  pl-lg-16pt navbar-dark bg-dark"
+                     id="default-navbar"
+                     data-primary>
+
+                    <!-- Navbar toggler -->
+                    <button class="navbar-toggler d-block d-lg-none rounded-0"
+                            type="button"
+                            data-toggle="sidebar">
+                        <span class="material-icons">menu</span>
+                    </button>
+
+                    <!-- Navbar Brand -->
+                    <a href="https://grabwebhost.in"
+                       class="navbar-brand mr-16pt d-lg-none">
+                        <img class="navbar-brand-icon mr-0 mr-lg-8pt"
+                             src="/static/images/gbl.png" 
+                             width="32"
+                             alt="GrabWebHost">
+                        <span class="d-none d-lg-block"><small>GRABWEBHOST</small>></span>
+                    </a>
+
+                    
+                  
+                    
+
+                    <div class="flex">
+                        
+                    </div>
+                    
+                   
+                    <div class="custom-control custom-checkbox-toggle custom-control-inline mr-1">
+                        <input  type="checkbox" id="subscribe" class="custom-control-input">
+                        <label class="custom-control-label" for="subscribe">s</label>
+                    </div>
+                    <label style=" color: #f1f1f1; font-weight: bold" class=" mb-0" for="subscribe">Dark Mode</label>
+                    <div class="nav navbar-nav flex-nowrap d-none d-lg-flex mr-16pt"
+                         style="white-space: nowrap;">
+                        
+                    </div>
+                    
+                    
+
+                    <div class="nav navbar-nav flex-nowrap d-flex ml-0 mr-16pt">
+                        {% if request.user.is_authenticated %}
+                        <div class="nav-item dropdown d-none d-sm-flex">
+                            <a href="#"
+                               class="nav-link d-flex align-items-center dropdown-toggle"
+                               data-toggle="dropdown">
+                                <img width="32"
+                                     height="32"
+                                     class="rounded-circle mr-8pt"
+                                     
+                                     src="/media/{{photo}}"
+                                     alt="account" />
+                                <span class="flex d-flex flex-column mr-8pt">
+                                    <span class="navbar-text-100">{{user}}</span>
+                                   
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div class="dropdown-header"><strong>Account</strong></div>
+                                <a class="dropdown-item"
+                                   href="/dashboard/profile/">Edit Account</a>
+                                <a class="dropdown-item"
+                                   href="/dashboard/securitypin/">Security Pin</a>
+                                <a class="dropdown-item"
+                                   href="/dashboard/changepassword/">Change Password</a>
+                                <a class="dropdown-item"
+                                   href="/dashboard/logout/">Logout</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <!-- Notifications dropdown -->
+                        {% if request.user.is_authenticated %}
+                        <div class="nav-item ml-16pt dropdown dropdown-notifications">
+                            <button class="nav-link btn-flush dropdown-toggle"
+                                    type="button"
+                                    data-toggle="dropdown"
+                                    data-dropdown-disable-document-scroll
+                                    data-caret="false">
+                                <i class="material-icons">notifications</i>
+                                <span class="badge badge-notifications badge-accent">2</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div data-perfect-scrollbar
+                                     class="position-relative">
+                                    <div class="dropdown-header"><strong>System notifications</strong></div>
+                                    {% for i in news %}
+                                    <div class="list-group list-group-flush mb-0">
+
+                                        <a href="javascript:void(0);"
+                                           class="list-group-item list-group-item-action unread">
+                                           
+                                            <span class="d-flex align-items-center mb-1">
+                                                
+                                                <small class="text-black-50">{{i.news_date}}</small>
+
+                                                <span class="ml-auto unread-indicator bg-accent"></span>
+
+                                            </span>
+                                            <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <span class="avatar-title rounded-circle bg-light">
+                                                        <i class="material-icons font-size-16pt text-accent">account_circle</i>
+                                                    </span>
+                                                </span>
+                                                
+                                                <span class="flex d-flex flex-column">
+
+                                                    <span class="text-black-70">{{i.new_title}}</span>
+                                                </span>
+                                            </span>
+                                        </a>
+
+                                        
+                                        
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <!-- // END Notifications dropdown -->
+
+                        <!-- Notifications dropdown -->
+                        {% if request.user.is_authenticated %}
+                        <div class="nav-item ml-16pt dropdown dropdown-notifications">
+                            <button class="nav-link btn-flush dropdown-toggle"
+                                    type="button"
+                                    data-toggle="dropdown"
+                                    data-dropdown-disable-document-scroll
+                                    data-caret="false">
+                                <i class="material-icons icon-24pt">mail_outline</i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div data-perfect-scrollbar
+                                     class="position-relative">
+                                    <div class="dropdown-header"><strong>Messages</strong></div>
+                                    <div class="list-group list-group-flush mb-0">
+                                        {% for i in announcement %}
+                                        <a href="javascript:void(0);"
+                                           class="list-group-item list-group-item-action unread">
+                                           
+                                            <span class="d-flex">
+                                                <span class="avatar avatar-xs mr-2">
+                                                    <img src="/static/images/gbl.png"
+                                                         alt="people"
+                                                         class="avatar-img rounded-circle">
+                                                </span>
+                                               
+                                                <span class="flex d-flex flex-column">
+                                                    <strong class="text-black-100">{{i.announcement_date}}</strong>
+                                                    <span class="text-black-70">{{i.announcement_title}}</span>
+                                                </span>
+                                            </span>
+                                        </a>
+
+                                       
+{% endfor %}
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <!-- // END Notifications dropdown -->
+                    </div>
+                   
+
+                </div>
+                
+
+                <!-- // END Header -->
+
+                
+                {% block content %}
+                {% endblock %}
+                
+
+                
+
+            </div>
+            <!-- // END drawer-layout__content -->
+
+            <!-- drawer -->
+            <div class="mdk-drawer js-mdk-drawer"
+                 id="default-drawer">
+                <div class="mdk-drawer__content">
+                    <div class="sidebar sidebar-light sidebar-left"
+                         data-perfect-scrollbar>
+
+                        <a href="https://grabwebhost.in/"
+                           class="sidebar-brand sidebar-brand-dark bg-dark">
+                            <img class="sidebar-brand-icon"
+                                 src="/static/images/gbl.png" 
+                                 alt="GrabWebHost">
+                            <span><small>GRABWEBHOST</small></span>
+                           
+                        </a>
+                        
+
+                        <div class="sidebar-heading">Overview</div>
+                        <ul class="sidebar-menu">
+                            <li class="sidebar-menu-item active">
+                                <a class="sidebar-menu-button"
+                                   href="/dashboard/">
+                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">insert_chart_outlined</span>
+                                    <span class="sidebar-menu-text">Dashboard</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+
+                        <div class="sidebar-heading">Service</div>
+                        <ul class="sidebar-menu">
+                            <li class="sidebar-menu-item active">
+                                <a class="sidebar-menu-button js-sidebar-collapse"
+                                   data-toggle="collapse"
+                                   href="#enterprise_menu">
+                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">donut_large</span>
+                                    Services
+                                    <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                                </a>
+                                <ul class="sidebar-submenu collapse sm-indent"
+                                    id="enterprise_menu">
+                                    <li class="sidebar-menu-item active">
+                                        <a class="sidebar-menu-button"
+                                           href="/dashboard/myservice/">
+                                            <span class="sidebar-menu-text active">My Service</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-menu-item active">
+                                        <a class="sidebar-menu-button"
+                                           href="/services/">
+                                            <span class="sidebar-menu-text">Order New Service</span>
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="sidebar-heading">Domain</div>
+                        <ul class="sidebar-menu">
+                            <li class="sidebar-menu-item active">
+                                <a class="sidebar-menu-button"
+                                   data-toggle="collapse"
+                                   href="#productivity_menu">
+                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">domain</span>
+                                    Domain
+                                    <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                                </a>
+                                <ul class="sidebar-submenu collapse sm-indent" id="productivity_menu">
+                                    <li class="sidebar-menu-item active">
+                                        <a class="sidebar-menu-button"
+                                           href="/dashboard/mydomain/">
+                                            <span class="sidebar-menu-text">My Domain</span>
+                                        </a>
+                                    </li>
+                                   
+                                    
+                                    
+                                </ul>
+                            </li>
+                        </ui>
+                            
+                       
+                            
+                            <div class="sidebar-heading">Support</div>
+                            <ul class="sidebar-menu">
+                            
+                            <li class="sidebar-menu-item active">
+                                <a class="sidebar-menu-button"
+                                   data-toggle="collapse"
+                                   href="#community_menu">
+                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">people_outline</span>
+                                    Support
+                                    <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                                </a>
+                                <ul class="sidebar-submenu collapse sm-indent"
+                                    id="community_menu">
+                                    
+                                    <li class="sidebar-menu-item active">
+                                        <a class="sidebar-menu-button"
+                                           href="/dashboard/ticket/">
+                                            <span class="sidebar-menu-text">Ticket</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-menu-item active">
+                                        <a class="sidebar-menu-button"
+                                           href="/dashboard/news/">
+                                            <span class="sidebar-menu-text">News</span>
+                                        </a>
+                                    </li>
+                                   
+                                </ul>
+                            </li>
+                        </ul>
+                            
+                            <div class="sidebar-heading">Create TIcket</div>
+                            <ul class="sidebar-menu">
+                        
+                            <li class="sidebar-menu-item active">
+                                <a class="sidebar-menu-button"
+                                  
+                                   href="/dashboard/openticket/">
+                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">message</span>
+                                    Create Ticket
+                                </a>
+                                
+                            </li>
+                            </ul>
+                            
+                            <div class="sidebar-heading">Account</div>
+                            <li class="sidebar-menu-item active">
+                                <a class="sidebar-menu-button"
+                                   data-toggle="collapse"
+                                   href="#account_menu">
+                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
+                                    Account
+                                    <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                                </a>
+                                <ul class="sidebar-submenu collapse sm-indent"
+                                    id="account_menu">
+                                    <li class="sidebar-menu-item active">
+                                        <a class="sidebar-menu-button"
+                                           href="/dashboard/profile/">
+                                            <span class="sidebar-menu-text">My Profile</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-menu-item active">
+                                        <a class="sidebar-menu-button"
+                                           href="/dashboard/changepassword/">
+                                            <span class="sidebar-menu-text">Change Password</span>
+                                        </a>
+                                    </li>  
+                                </ul>
+                            </li>
+                            
+                        </ul>
+
+                        <div class="sidebar-heading">Billing</div>
+                        <ul class="sidebar-menu">
+                            
+                            
+                            <li class="sidebar-menu-item active">
+                                <a class="sidebar-menu-button"
+                                   data-toggle="collapse"
+                                   href="#invoice_menu">
+                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">payment</span>
+                                    Invoice
+                                    <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                                </a>
+                                <ul class="sidebar-submenu collapse sm-indent"
+                                    id="invoice_menu">
+                                    <li class="sidebar-menu-item active">
+                                        <a class="sidebar-menu-button"
+                                           href="/dashboard/invoice/">
+                                            <span class="sidebar-menu-text">Invoice</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                           
+                                </ul>
+                            </li>
+                           
+                            
+                        </ul>
+                    
+
+                    </div>
+                </div>
+            </div>
+            <!-- // END drawer -->
+        </div>
+      
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://api.whatsapp.com/send?phone=9354519271" class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>
+     
+        <script src="/static/assets/vendor/jquery.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script src="/static/assets/vendor/popper.min.js"></script>
+        <script src="/static/assets/vendor/bootstrap.min.js"></script>
+
+        <!-- Perfect Scrollbar -->
+        <script src="/static/assets/vendor/perfect-scrollbar.min.js"></script>
+
+        <!-- DOM Factory -->
+        <script src="/static/assets/vendor/dom-factory.js"></script>
+
+        <!-- MDK -->
+        <script src="/static/assets/vendor/material-design-kit.js"></script>
+
+        <!-- App JS -->
+        <script src="/static/assets/js/app.js"></script>
+
+        <!-- Highlight.js -->
+        <script src="/static/assets/js/hljs.js"></script>
+
+        <!-- Global Settings -->
+        <script src="/static/assets/js/settings.js"></script>
+
+        <!-- Flatpickr -->
+        <script src="/static/assets/vendor/flatpickr/flatpickr.min.js"></script>
+        <script src="/static/assets/js/flatpickr.js"></script>
+
+        <!-- Moment.js -->
+        <script src="/static/assets/vendor/moment.min.js"></script>
+        <script src="/static/assets/vendor/moment-range.js"></script>
+
+        <!-- Chart.js -->
+        <script src="/static/assets/vendor/Chart.min.js"></script>
+        <script src="/static/assets/js/chartjs.js"></script>
+
+        <!-- Chart.js Samples -->
+        <script src="/static/assets/js/page.analytics-dashboard.js"></script>
+
+        <!-- Vector Maps -->
+        <script src="/static/assets/vendor/jqvmap/jquery.vmap.min.js"></script>
+        <script src="/static/assets/vendor/jqvmap/maps/jquery.vmap.world.js"></script>
+        <script src="/static/assets/js/vector-maps.js"></script>
+
+        <!-- List.js -->
+        <script src="/static/assets/vendor/list.min.js"></script>
+        <script src="/static/assets/js/list.js"></script>
+
+        <!-- Tables -->
+        <script src="/static/assets/js/toggle-check-all.js"></script>
+        <script src="/static/assets/js/check-selected-row.js"></script>
+
+       
+        <!-- <script src="/static/assets/js/app-settings.js"></script> -->
+        <script>
+            $('#subscribe').change(function(){
+                
+    if($(this).is(":checked")) {
+        $("#drkmodestatus").addClass("dark-mode");
+    } else {
+        $('#drkmodestatus').removeClass("dark-mode");
+    }
+});</script>
+
+
+ 
+    </body>
+
+
+</html>

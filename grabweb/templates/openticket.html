@@ -1,0 +1,120 @@
+{% extends "dashboardmaster.html" %}
+{% block title %}
+  GrabWebHost -DashBoard
+{% endblock %}
+{% block content %}
+
+
+<div class=" py-32pt py-lg-64pt">
+    <div class="container-fluid page__container">
+        <div class="col-lg-10 p-0 mx-auto">
+            <div class="row">
+                <div class="col-md-6 mb-24pt mb-md-0">
+                    {% for message in messages  %}            
+     
+          <div class="alert alert-soft-warning mb-lg-32pt">
+            <div class="d-flex flex-wrap align-items-start">
+                <div class="mr-8pt">
+                    <i class="material-icons">error</i>
+                </div>
+                <div class="flex" style="min-width: 180px">
+                    <small class="text-100">
+                        <strong id="error">Notice :- {{message}}</strong><br>
+                    
+                    </small>
+                </div>
+            </div>
+        </div>
+      {% endfor %}  
+                    <form action="" method="post">{% csrf_token %}
+                
+                        <div class="form-group">
+                            <label class="form-label"
+                                   for="email">Subject:</label>
+                            <input id="email"
+                                   type="text"
+                                   name="subject"
+                                   class="form-control"
+                                   placeholder="Subject">
+                        </div>
+                        <div class="form-group mb-24pt">
+                            <label class="form-label"
+                                   for="data">Query</label>
+                            <textarea class="form-control" rows="12" cols="35" name="data" > </textarea>
+                        </div>
+                        <div class="form-group">
+                           <label class="form-label"
+                                   for="email">{{forms}}</label>
+                                   
+                        </div>
+                            
+                        <div class="form-group">
+                            <label class="form-label"
+                                   for="email">Priority</label>
+                                   <select id="select01"
+                                   data-toggle="select"
+                                   class="form-control" name="priority" id="country">
+                               <option selected="" value="0">Normal</option>
+                            
+                            
+                               <option value="1">Important</option>
+                               <option value="2">urgent</option>
+                               </select>
+                        </div>
+                        <button type="submit" class="btn btn-accent">submit</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-0">
+                        <div class="card-body">
+                            <h5>Deails</h5>
+                            <div class="d-flex mb-8pt">
+                                <div class="flex"><strong class="text-70">Full Name</strong></div>
+                                <strong>{{name}}</strong>
+                            </div>
+
+                            <div class="alert alert-soft-warning">
+                                <div class="d-flex flex-wrap align-items-start">
+                                    <div class="mr-8pt">
+                                        <i class="material-icons">check</i>
+                                    </div>
+                                    <div class="flex"
+                                         style="min-width: 180px">
+                                        <small class="text-black-100">
+                                           Email ID <strong>{{email}}</strong>
+                                        </small>
+                                        
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div class="alert alert-soft-warning">
+                                <div class="d-flex flex-wrap align-items-start">
+                                    <div class="mr-8pt">
+                                        <i class="material-icons">check</i>
+                                    </div>
+                                    <div class="flex"
+                            style="min-width: 180px">
+                           <small class="text-black-100">
+                              Username <strong>{{username}}</strong>
+                           </small>
+                           
+                       </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                            
+                           
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,557 @@
+
+
+{% extends "dashboardmaster.html" %}
+{% block title %}
+  GrabWebHost -Payment Information
+{% endblock %}
+{% block content %}
+                <div class="py-32pt navbar-submenu">
+                    <div class="container-fluid page__container">
+                        <div class="progression-bar progression-bar--active-accent">
+                            <a href="pricing.html"
+                               class="progression-bar__item progression-bar__item--complete">
+                                <span class="progression-bar__item-content">
+                                    <i class="material-icons progression-bar__item-icon">done</i>
+                                    <span class="progression-bar__item-text h5 mb-0 text-uppercase">Hosting</span>
+                                </span>
+                            </a>
+                            <a href="boxed-signup.html"
+                               class="progression-bar__item progression-bar__item--complete progression-bar__item--active">
+                                <span class="progression-bar__item-content">
+                                    <i class="material-icons progression-bar__item-icon"></i>
+                                    <span class="progression-bar__item-text h5 mb-0 text-uppercase">Payment Information</span>
+                                </span>
+                            </a>
+                            <a href="boxed-signup-payment.html"
+                               class="progression-bar__item">
+                                <span class="progression-bar__item-content">
+                                    <i class="material-icons progression-bar__item-icon"></i>
+                                    <span class="progression-bar__item-text h5 mb-0 text-uppercase">Checkout</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+   {% for message in messages  %}            
+     
+        <div class="alert alert-soft-warning mb-lg-32pt">
+          <div class="d-flex flex-wrap align-items-start">
+              <div class="mr-8pt">
+                  <i class="material-icons">error</i>
+              </div>
+              <div class="flex" style="min-width: 180px">
+                  <small class="text-100">
+                      <strong>Notice :- {{message}}</strong><br>
+                  
+                  </small>
+              </div>
+          </div>
+      </div>
+    {% endfor %} 
+    
+                 <div class=" py-32pt py-lg-64pt">
+                    <div class="container-fluid page__container">
+                        <div class="col-lg-10 p-0 mx-auto">
+                            <div class="row"> 
+                             {% if user.is_authenticated %}
+     <div id="login05" class="col-md-6 mb-24pt mb-md-0">
+                                    <form action="" method="post"> {% csrf_token %} 
+                                        
+                                        <div class="form-group">
+                                            <label class="form-label"
+                                                   for="email">Promotion Code:</label>
+                                            <input 
+                                                   type="text"
+                                                   class="form-control"
+                                                   name="promotion"
+                                                   placeholder="{{placeholder}}">
+                                        </div>
+                                        <input
+                                                   type="text"
+                                                   name="url"
+                                                    value=  {{ request.build_absolute_uri }}
+                                                  hidden>
+                                        
+                                        <button type="submit" class="btn btn-accent">Validate</button>
+                                    </form>
+                                    
+                                    
+                                </div>
+{% else %}
+                            <div id="login05" class="col-md-6 mb-24pt mb-md-0">
+                                    <form action="" method="post"> {% csrf_token %}  
+                                        
+                                        <div class="form-group">
+                                            <label class="form-label"
+                                                   for="email">Your email:</label>
+                                            <input id="email"
+                                                   type="email"
+                                                   class="form-control"
+                                                   name="email"
+                                                   placeholder="Your email address ..." required>
+                                        </div>
+                                        <div class="form-group mb-24pt">
+                                            <label class="form-label"
+                                                   for="password">Password:</label>
+                                            <input id="password"
+                                                   type="password"
+                                                   name="password"
+                                                   class="form-control"
+                                                   placeholder="Your password ..." required>
+                                        </div>
+                                                 <input
+                                                   type="text"
+                                                   name="url"
+                                                    value=  {{ request.build_absolute_uri }}
+                                                  hidden>
+                                        <button type="submit" class="btn btn-accent">Login Now</button>
+                                        <a onclick="register()" class="btn btn-dark">Create Account</a>
+                                    </form>
+                                    
+                                </div>
+                                <div id="register04" class="col-md-6 mb-24pt mb-md-0" style="display:none;">
+                                    <form action="" method="post"> {% csrf_token %} 
+                                        <div class="form-group">
+                                            <label class="form-label"
+                                                   for="first">First Name:</label>
+                                            <input 
+                                                   type="text"
+                                                   class="form-control"
+                                                   name="firstname"
+                                                   placeholder="First Name" required>
+                                        </div>
+                                        <input
+                                                   type="text"
+                                                   name="url"
+                                                    value=  {{ request.build_absolute_uri }}
+                                                  hidden>
+                                      
+                                        <div class="form-group">
+                                            <label class="form-label"
+                                                   for="last">Last Name:</label>
+                                            <input 
+                                                   type="text"
+                                                   class="form-control"
+                                                   name="lastname"
+                                                   placeholder="Last Name " >
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="form-label"
+                                                   for="last">UserName:</label>
+                                            <input 
+                                                   type="text"
+                                                   name="username"
+                                                   class="form-control"
+                                                   placeholder="Username " required>
+                                        </div>
+                                        
+                                        
+                                        <div class="form-group">
+                                            <label class="form-label"
+                                                   for="email">Your email:</label>
+                                            <input id="email"
+                                                   type="email"
+                                                   name="email"
+                                                   class="form-control"
+                                                   placeholder="Your email address ..." required>
+                                        </div>
+                                        <div class="form-group mb-24pt">
+                                            <label class="form-label"
+                                                   for="password">Password:</label>
+                                            <input id="password"
+                                                   type="password"
+                                                   name="password"
+                                                   class="form-control"
+                                                   placeholder="Your password ..." required>
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="form-label"
+                                                   for="last">Country:</label>
+                                            <select id="select01"
+                                data-toggle="select"
+                                class="form-control" name="country" id="country">
+                            <option selected="" value="india">India</option>
+                         
+                         
+                            <option value="Canada">Canada</option>
+<option value="Albania">Albania</option>
+<option value="Algeria">Algeria</option>
+<option value="American Samoa">American Samoa</option>
+<option value="Andorra">Andorra</option>
+<option value="Angola">Angola</option>
+<option value="Anguilla">Anguilla</option>
+<option value="Antarctica">Antarctica</option>
+<option value="Antigua">Antigua</option>
+<option value="Argentina">Argentina</option>
+<option value="Armenia">Armenia</option>
+<option value="Aruba">Aruba</option>
+<option value="Australia">Australia</option>
+<option value="Austria">Austria</option>
+<option value="Azerbaijani">Azerbaijani</option>
+<option value="Bahamas">Bahamas</option>
+<option value="Bahrain">Bahrain</option>
+<option value="Bangladesh">Bangladesh</option>
+<option value="Barbados">Barbados</option>
+<option value="Belarus">Belarus</option>
+<option value="Netherlands">Belgium</option>
+<option value="Belize">Belize</option>
+<option value="Benin">Benin</option>
+<option value="Bermuda">Bermuda</option>
+<option value="Bhutan">Bhutan</option>
+<option value="Bolivia">Bolivia</option>
+<option value="Bosnia-Hercegovina">Bosnia-Hercegovina</option>
+<option value="Botswana">Botswana</option>
+<option value="Bouvet Island">Bouvet Island</option>
+<option value="Brazil">Brazil</option>
+<option value="British IOT">British IOT</option>
+<option value="Brunei Darussalam">Brunei Darussalam</option>
+<option value="Bulgaria">Bulgaria</option>
+<option value="Burkina Faso">Burkina Faso</option>
+<option value="Burundi">Burundi</option>
+<option value="Cambodia">Cambodia</option>
+<option value="Cameroon">Cameroon</option>
+<option value="Cape Verde">Cape Verde</option>
+<option value="Cayman Islands">Cayman Islands</option>
+<option value="Central African Rep">Central African Rep</option>
+<option value="Chad">Chad</option>
+<option value="Chile">Chile</option>
+<option value="China">China</option>
+<option value="Christmas Island">Christmas Island</option>
+<option value="Cocos Islands">Cocos Islands</option>
+<option value="Colombia">Colombia</option>
+<option value="Comoros">Comoros</option>
+<option value="Congo">Congo</option>
+<option value="Cook Islands">Cook Islands</option>
+<option value="Costa Rica">Costa Rica</option>
+<option value="Croatia">Croatia</option>
+<option value="Cyprus">Cyprus</option>
+<option value="Czech Republic">Czech Republic</option>
+<option value="Denmark">Denmark</option>
+<option value="Djibouti">Djibouti</option>
+<option value="Dominica">Dominica</option>
+<option value="Dominican Republic">Dominican Republic</option>
+<option value="East Timor">East Timor</option>
+<option value="Ecuador">Ecuador</option>
+<option value="Egypt">Egypt</option>
+<option value="El Salvador">El Salvador</option>
+<option value="Equatorial Guinea">Equatorial Guinea</option>
+<option value="Eritrea">Eritrea</option>
+<option value="Estonia">Estonia</option>
+<option value="Ethiopia">Ethiopia</option>
+<option value="Faeroe Islands">Faeroe Islands</option>
+<option value="Falkland Islands">Falkland Islands</option>
+<option value="Fiji">Fiji</option>
+<option value="Finland">Finland</option>
+<option value="France">France</option>
+<option value="French Guiana">French Guiana</option>
+<option value="French Polynesia">French Polynesia</option>
+<option value="French Southern">French Southern</option>
+<option value="French Southern Ter">French Southern Ter</option>
+<option value="Gabon">Gabon</option>
+<option value="Gambia">Gambia</option>
+<option value="Georgia">Georgia</option>
+<option value="Germany">Germany</option>
+<option value="Ghana">Ghana</option>
+<option value="Gibraltar">Gibraltar</option>
+<option value="Greece">Greece</option>
+<option value="Greenland">Greenland</option>
+<option value="Grenada">Grenada</option>
+<option value="Guadeloupe">Guadeloupe</option>
+<option value="Guam">Guam</option>
+<option value="Guatemala">Guatemala</option>
+<option value="Guinea">Guinea</option>
+<option value="Guinea-Bissau">Guinea-Bissau</option>
+<option value="Guyana">Guyana</option>
+<option value="Haiti">Haiti</option>
+<option value="Heard">Heard</option>
+<option value="Honduras">Honduras</option>
+<option value="Hong Kong">Hong Kong</option>
+<option value="Hungary">Hungary</option>
+<option value="Iceland">Iceland</option>
+<option value="United States ">United States</option>
+<option value="Indonesia">Indonesia</option>
+<option value="Ireland">Ireland</option>
+<option value="Israel">Israel</option>
+<option value="Italy">Italy</option>
+<option value="Ivory Coast">Ivory Coast</option>
+<option value="Jamaica">Jamaica</option>
+<option value="Japan">Japan</option>
+<option value="Jordan">Jordan</option>
+<option value="Kazakhstan">Kazakhstan</option>
+<option value="Kenya">Kenya</option>
+<option value="Kiribati">Kiribati</option>
+<option value="Kuwait">Kuwait</option>
+<option value="Kyrgyzstan">Kyrgyzstan</option>
+<option value="Laos">Laos</option>
+<option value="Latvia">Latvia</option>
+<option value="Lebanon">Lebanon</option>
+<option value="Lesotho">Lesotho</option>
+<option value="Liberia">Liberia</option>
+<option value="Liechtenstein">Liechtenstein</option>
+<option value="Lithuania">Lithuania</option>
+<option value="Luxembourg">Luxembourg</option>
+<option value="Macau">Macau</option>
+<option value="Macedonia">Macedonia</option>
+<option value="Madagascar">Madagascar</option>
+<option value="Malawi">Malawi</option>
+<option value="Malaysia">Malaysia</option>
+<option value="Maldives">Maldives</option>
+<option value="Mali">Mali</option>
+<option value="Malta">Malta</option>
+<option value="Marshall Islands">Marshall Islands</option>
+<option value="Martinique">Martinique</option>
+<option value="Mauritania">Mauritania</option>
+<option value="Mauritius">Mauritius</option>
+<option value="Mayotte">Mayotte</option>
+<option value="Mexico">Mexico</option>
+<option value="Micronesia">Micronesia</option>
+<option value="MNP">MNP</option>
+<option value="Moldova">Moldova</option>
+<option value="Monaco">Monaco</option>
+<option value="Mongolia">Mongolia</option>
+<option value="Montserrat">Montserrat</option>
+<option value="Morocco">Morocco</option>
+<option value="Mozambique">Mozambique</option>
+<option value="Myanmar">Myanmar</option>
+<option value="Namibia">Namibia</option>
+<option value="Nauru">Nauru</option>
+<option value="Nepal">Nepal</option>
+<option value="NER">NER</option>
+<option value="Netherlands">Netherlands</option>
+<option value="Neutral Zone">Neutral Zone</option>
+<option value="New Caledonia">New Caledonia</option>
+<option value="New Zealand">New Zealand</option>
+<option value="Nicaragua">Nicaragua</option>
+<option value="Nigeria">Nigeria</option>
+<option value="Niue">Niue</option>
+<option value="Norfolk Island">Norfolk Island</option>
+<option value="North Korea">North Korea</option>
+<option value="Norway">Norway</option>
+<option value="Oman">Oman</option>
+<option value="Pakistan">Pakistan</option>
+<option value="Palau">Palau</option>
+<option value="Panama">Panama</option>
+<option value="Papua New Guinea">Papua New Guinea</option>
+<option value="Paraguay">Paraguay</option>
+<option value="Peru">Peru</option>
+<option value="Philippines">Philippines</option>
+<option value="Pitcairn">Pitcairn</option>
+<option value="Poland">Poland</option>
+<option value="Portugal">Portugal</option>
+<option value="Puerto Rico">Puerto Rico</option>
+<option value="Qatar">Qatar</option>
+<option value="Reunion">Reunion</option>
+<option value="Romania">Romania</option>
+<option value="Russia">Russia</option>
+<option value="Rwanda">Rwanda</option>
+<option value="Saint Helena">Saint Helena</option>
+<option value="Saint Lucia">Saint Lucia</option>
+<option value="Saint Pierre">Saint Pierre</option>
+<option value="Saint Vincent">Saint Vincent</option>
+<option value="Samoa">Samoa</option>
+<option value="San Marino">San Marino</option>
+<option value="Saudi Arabia">Saudi Arabia</option>
+<option value="Scotland">Scotland</option>
+<option value="Senegal">Senegal</option>
+<option value="Seychelles">Seychelles</option>
+<option value="Sierra Leone">Sierra Leone</option>
+<option value="Singapore">Singapore</option>
+<option value="Slovak Republic">Slovak Republic</option>
+<option value="Slovenia">Slovenia</option>
+<option value="Solomon Islands">Solomon Islands</option>
+<option value="Somali Democratic">Somali Democratic</option>
+<option value="South Africa">South Africa</option>
+<option value="South Georgia">South Georgia</option>
+<option value="South Korea">South Korea</option>
+<option value="Spain">Spain</option>
+<option value="Sri Lanka">Sri Lanka</option>
+<option value="St. Kitts and Nevis">St. Kitts and Nevis</option>
+<option value="STP">STP</option>
+<option value="Suriname">Suriname</option>
+<option value="Svalbard">Svalbard</option>
+<option value="Swaziland">Swaziland</option>
+<option value="Sweden">Sweden</option>
+<option value="Switzerland">Switzerland</option>
+<option value="Syria">Syria</option>
+<option value="Taiwan">Taiwan</option>
+<option value="Tajikistan">Tajikistan</option>
+<option value="Tanzania">Tanzania</option>
+<option value="TCA">TCA</option>
+<option value="Thailand">Thailand</option>
+<option value="Toga">Toga</option>
+<option value="Togolese">Togolese</option>
+<option value="Tokelau">Tokelau</option>
+<option value="Tongo">Tongo</option>
+<option value="Trinidad and Tobago">Trinidad and Tobago</option>
+<option value="Tunisia">Tunisia</option>
+<option value="Turkey">Turkey</option>
+<option value="Turkmenistan">Turkmenistan</option>
+<option value="Tuvalu">Tuvalu</option>
+<option value="Uganda">Uganda</option>
+<option value="Ukraine">Ukraine</option>
+<option value="United Arab">United Arab</option>
+<option value="United Kingdom">United Kingdom</option>
+<option value="Upper Volta">Upper Volta</option>
+<option value="Uruguay">Uruguay</option>
+<option value="USSR(Former)">USSR(Former)</option>
+<option value="Uzbekistan">Uzbekistan</option>
+<option value="Vanuatu">Vanuatu</option>
+<option value="Vatican City">Vatican City</option>
+<option value="Venezuela">Venezuela</option>
+<option value="VI, British">VI, British</option>
+<option value="Viet Nam">Viet Nam</option>
+<option value="Virgin Islands, USA">Virgin Islands, USA</option>
+<option value="Western Sahara">Western Sahara</option>
+<option value="WLF">WLF</option>
+<option value="Yemen">Yemen</option>
+<option value="Yugoslavia">Yugoslavia</option>
+<option value="Zaire">Zaire</option>
+<option value="Zambia">Zambia</option>
+<option value="Zimbabwe">Zimbabwe</option>
+
+                        </select>
+                               
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="form-label"
+                                                   for="first">Phone Number:</label>
+                                            <input 
+                                                   type="text"
+                                                   name="number"
+                                                   class="form-control"
+                                                   placeholder="Phone Number" required>
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="form-label"
+                                                   for="first">Address</label>
+                                            <input name="address"
+                                                   type="text"
+                                                   class="form-control"
+                                                   placeholder="Address" required>
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="form-label"
+                                                   for="first">PinCode</label>
+                                            <input name="pincode"
+                                                   type="text"
+                                                   class="form-control"
+                                                   placeholder="PinCode" required>
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="form-label"
+                                                   for="first">City:</label>
+                                            <input name="city"
+                                                   type="text"
+                                                   class="form-control"
+                                                   placeholder="City" required>
+                                        </div>
+                                         
+                                        <a onclick="login()" class="btn btn-accent">Login Now</a>
+                                        <button type="submit" class="btn btn-dark">Create Account</button>
+                                    </form>
+                                </div>
+                                 {% endif %}
+                               
+                                <div class="col-md-6">
+                                    <div class="card mb-0">
+                                        <div class="card-body">
+                                            <h5>Purchase summary</h5>
+                                            <div class="d-flex mb-8pt">
+                                                <div class="flex"><strong class="text-70">Service</strong></div>
+                                                <strong>{{domain}}</strong>
+                                            </div>
+
+                                          
+
+                                            <div class="d-flex mb-16pt pb-16pt border-bottom">
+                                                <div class="flex"><strong class="text-70">Price</strong></div>
+                                                <strong> <select id="custom-select" class="form-control custom-select calculate">
+                                        <option data-price="{{domainprice}}" data-p="12" selected="">INR {{domainprice}} Anually</option>
+                                        
+                                    </select></strong>
+                                    
+                                            </div>
+                                            
+                                         
+                                            <form action="" method="post">{% csrf_token %}
+                                            <input type=text name="add" value="add" hidden>
+                                                {% if user.is_authenticated %}
+                                                <button  type="submit" class="btn btn-accent">Continue Shopping</button>
+                                                {% endif %}
+                                      
+                                             </form>
+ <div class="d-flex mb-16pt pb-16pt border-bottom">
+                                                
+                                            </div>
+                                             <div class="d-flex mb-8pt">
+                                                <div class="flex"><strong class="text-70">SubTotal</strong></div>
+                                                <strong id="item-price">{{domainprice}}</strong>
+                                            </div>
+                                          
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox"
+                                                       class="custom-control-input"
+                                                       checked
+                                                       id="topic-all">
+                                               <label class="custom-control-label"> Terms and conditions</label>
+                                              <a href="/tac/"> <small class="form-text text-muted">By checking here and continuing, I agree to the GrabWebHost Terms of Use</small></a> 
+                                            </div>
+                                               <div class="d-flex mb-16pt pb-16pt border-bottom">
+                                                
+                                            </div>
+                                            {% if user.is_authenticated %}
+                                             <form action="" method="post">{% csrf_token %}
+                
+                                            <input id="service" type=hidden name="domain"  value="{{domain}}" >
+                                            <input id="domain" type=hidden name="price"  value="{{domainprice}}" >
+                                           
+                                          
+                                             <input
+                                                   type="text"
+                                                   name="url"
+                                                    value=  {{ request.build_absolute_uri }}
+                                                  hidden>
+                                            <button type="submit"   class="btn btn-dark"  >Buy Now</button> 
+                                            </form>
+                                           
+                                             
+     
+{% endif %}
+                                            
+                                       
+                                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+                
+<script>
+
+function register() {
+  //code
+
+  document.getElementById("login05").style.display = "none";
+  document.getElementById("register04").style.display = "block";
+  
+}
+function login() {
+  //code
+
+  document.getElementById("register04").style.display = "none";
+  document.getElementById("login05").style.display = "block";
+  
+}
+
+
+</script>
+
+
+
+
+
+{% endblock %}  
+            

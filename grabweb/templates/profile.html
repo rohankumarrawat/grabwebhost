@@ -1,0 +1,111 @@
+{% extends "dashboardmaster.html" %}
+{% block title %}
+  GrabWebHost -DashBoard
+{% endblock %}
+{% block content %}
+<div class="border-bottom-2 py-32pt position-relative z-1">
+    <div class="container-fluid page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+        <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+
+            <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                <h2 class="mb-0">Account</h2>
+
+                <ol class="breadcrumb p-0 m-0">
+                    <li class="breadcrumb-item active"><a href="/">Home</a></li>
+
+                    <li class="breadcrumb-item active">
+
+                       Account
+
+                    </li>
+
+                </ol>
+
+            </div>
+
+          
+
+        </div>
+
+
+        <div class="row"
+             role="tablist">
+           
+            
+            <div class="col-auto border-left">
+                <a href="#"
+                   class="btn btn-accent">Login Logs</a>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    {% for message in messages  %}            
+     
+            <div class="alert alert-soft-warning mb-lg-32pt">
+              <div class="d-flex flex-wrap align-items-start">
+                  <div class="mr-8pt">
+                      <i class="material-icons">error</i>
+                  </div>
+                  <div class="flex" style="min-width: 180px">
+                      <small class="text-100">
+                          <strong>Notice :- {{message}}</strong><br>
+                      
+                      </small>
+                  </div>
+              </div>
+          </div>
+        {% endfor %}    
+
+    <form action="" method="post" >{% csrf_token %}
+        <div class="row">
+            <div class="col-lg-9 pr-lg-0">
+
+                <div class="page-section">
+                    <h4>Basic Information</h4>
+                    <div class="list-group list-group-form">
+                        <div class="list-group-item">
+                            <div class="form-group row align-items-center mb-0">
+                                <label class="form-label col-form-label col-sm-3">First name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="firstname" value="{{data.first_name}}" placeholder="{{data.first_name}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="form-group row align-items-center mb-0">
+                                <label class="form-label col-form-label col-sm-3">Last name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="lastname" value="{{data.last_name}}" placeholder="{{data.last_name}}"">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="form-group row align-items-center mb-0">
+                                <label class="form-label col-form-label col-sm-3">Email address</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" name="email" value="{{data.email}}" placeholder="{{data.email}}">
+                                    <small class="form-text text-muted">Note that if you change your email, you will have to confirm it again.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3 page-nav">
+                <div class="page-section pt-lg-112pt">
+                    <nav class="nav page-nav__menu">
+                        <a class="nav-link active" href="#">Basic Information</a>
+                        <a class="nav-link" href="/dashboard/privacy_profile/">Profile &amp; Privacy</a>
+                    
+                      
+                    </nav>
+                    <div class="page-nav__content">
+                        <button type="submit" class="btn btn-accent">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

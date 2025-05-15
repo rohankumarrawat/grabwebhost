@@ -1,0 +1,145 @@
+{% extends "dashboardmaster.html" %}
+{% block title %}
+  GrabWebHost -Invoice
+{% endblock %}
+{% block content %}
+<nav class="navbar navbar-light bg-alt border-bottom border-top">
+                    <div class="container-fluid page__container">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="/dashboard/invoice/" class="nav-link text-70"><i class="material-icons icon--left">keyboard_backspace</i> Back to Invoice</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="page-section bg-alt border-bottom-2">
+                    <div class="container-fluid page__container">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="row">
+                                    <div class="col-md-6 mb-24pt mb-lg-0">
+                                        <p class="text-70 mb-0"><strong>Prepared for</strong></p>
+                                        <h2>{{info.firstname}} {{info.lastname}}</h2>
+                                       
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="text-70 mb-0"><strong>Prepared by</strong></p>
+                                        <h2>GrabWebHost</h2>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 text-lg-right d-flex flex-lg-column mb-24pt mb-lg-0 border-bottom border-lg-0 pb-16pt pb-lg-0">
+                                <div class="flex">
+                                    <p class="text-70 mb-8pt"><strong>Invoice</strong></p>
+                                    <p class="text-50">
+                                        {{info.generates_date}}<br>
+                                        
+                                    </p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid page__container">
+                    <form action="https://huma.demo.frontendmatter.com/boxed-edit-account.html">
+                        <div class="row">
+                            <div class="col-lg-9 pr-lg-0">
+
+                                <div class="page-section">
+                                    <h4>Invoice Summary</h4>
+
+                                    <div class="card table-responsive mb-24pt">
+                                        <table class="table table-flush table--elevated">
+                                            <thead>
+                                                <tr>
+                                                    <th>Description</th>
+                                                    <th style="width: 60px;" class="text-right">Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% if hostingdata == 'yes' %}
+                                                 {% if domain23 == 0 %}
+                                                <tr>
+                                                    <td>
+                                                        <p class="mb-0"><strong>{{service}} Plan -{{ds}}</strong></p>
+                                                        
+                                                   
+                                                    </td>
+                                                    <td class="text-right"><strong>{{intermediateprice}}</strong></td>
+                                                </tr>
+                                                {% else %}
+                                                 <tr>
+                                                    <td>
+                                                        <p class="mb-0"><strong>{{service}} Plan + {{domain23}} -{{ds}}</strong></p>
+                                                        
+                                                   
+                                                    </td>
+                                                    <td class="text-right"><strong>{{intermediateprice}}</strong></td>
+                                                </tr>
+                                                {% endif %}
+                                                {% else %}
+                                                 <tr>
+                                                    <td>
+                                                        <p class="mb-0"><strong>{{service}} Plan -{{ds}}</strong></p>
+                                                        
+                                                   
+                                                    </td>
+                                                   
+                                                </tr>
+                                                  {% endif %}
+                                                
+                                                  {% if hostingdata == 'yes' %}
+                                                {% if discount != '0' %}
+                                                <tr>
+                                                    <td><strong>Credit discount</strong></td>
+                                                    <td class="text-right"><strong>-{{discount}}%</strong></td>
+                                                </tr>
+                                                {% endif %}
+                                                {% endif %}
+                                            </tbody>
+                                        </table>
+
+                                        <table class="table table-flush">
+                                            <tfoot>
+                                                <tr>
+                                                    <td class="text-right text-70"><strong>Subtotal</strong></td>
+                                                    <td style="width: 60px;" class="text-right"><strong>{{total}}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-right text-70"><strong>Total</strong></td>
+                                                    <td style="width: 60px;" class="text-right"><strong>{{total}}</strong></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+
+                                    <div class="px-16pt">
+                                        {% if info.status == 0 %}
+                                        <p class="text-70 mb-8pt"><strong>Invoice UnPaid</strong></p>
+                                        <a href="/dashboard/payinvoice?&invoice_id={{paymentid}}" class="btn btn-accent">Pay Now </a>
+                                        {% else %}
+                                                                                <p class="text-70 mb-8pt"><strong>Invoice Paid</strong></p>
+                                        {% endif %}
+                                       
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3 page-nav">
+                                <div class="page-section pt-lg-112pt">
+                                    <nav class="nav page-nav__menu">
+                                        
+                                        <a class="nav-link active" >Current Invoice</a>
+                                    </nav>
+                                    <!-- <div class="page-nav__content">
+            <button type="submit" class="btn btn-accent">Save changes</button>
+          </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+{% endblock %}

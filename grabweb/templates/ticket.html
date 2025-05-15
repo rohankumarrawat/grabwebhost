@@ -1,0 +1,613 @@
+{% extends "dashboardmaster.html" %}
+{% block title %}
+  GrabWebHost -DashBoard
+{% endblock %}
+{% block content %}
+<div class="border-bottom-2 py-32pt position-relative z-1">
+    <div class="container-fluid page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+        <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+
+            <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                <h2 class="mb-0">Tickets</h2>
+
+                <ol class="breadcrumb p-0 m-0">
+                    <li class="breadcrumb-item active"><a href="/">Home</a></li>
+
+                    <li class="breadcrumb-item active">
+
+                       Tickets
+
+                    </li>
+
+                </ol>
+
+            </div>
+
+          
+
+        </div>
+
+
+        <div class="row"
+             role="tablist">
+           
+            <div class="col-auto border-left">
+                <h6 class="m-0">{{lentik}}</h6>
+                <p class="text-50 mb-0 d-flex align-items-center">
+                    Total Tickets
+                    <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_up</i>
+                </p>
+            </div>
+            <div class="col-auto border-left">
+                <a href="#"
+                   class="btn btn-accent">Login Logs</a>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+<br>
+<div class="page-separator">
+    <div class="page-separator__text">Overview</div>
+</div>
+{% for message in messages  %}            
+     
+<div class="alert alert-soft-warning mb-lg-32pt">
+  <div class="d-flex flex-wrap align-items-start">
+      <div class="mr-8pt">
+          <i class="material-icons">error</i>
+      </div>
+      <div class="flex" style="min-width: 180px">
+          <small class="text-100">
+              <strong id="error">Notice :- {{message}}</strong><br>
+          
+          </small>
+      </div>
+  </div>
+</div>
+{% endfor %}  
+<div class="row mb-lg-8pt">
+    <div class="col-md-6 col-lg-3">
+        <a href="/dashboard/openticket/">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="position-relative mr-16pt">
+                       
+                        <canvas width="50" height="50"></canvas>
+                    </div>
+                   
+                    <div class="flex">
+                        <h3><strong>Open New Ticket</strong></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+    <div  class="col-md-6 col-lg-3" >
+        <div id="answered" class="card" type="button"  onclick="answered()">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="position-relative mr-16pt">
+                       
+                        <canvas width="50" height="50"></canvas>
+                    </div>
+                    <div class="flex">
+                       <h3><strong>Answered</strong></h3> 
+                    </div>
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div id="underprocess" class="card" type="button"  onclick="underprocess()">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="position-relative mr-16pt">
+                       
+                        <canvas width="50" height="50"></canvas>
+                    </div>
+                    <div class="flex">
+                        <h3><strong>Under Process</strong></h3>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div id="noreply" class="card" type="button"  onclick="noreply()">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="position-relative mr-16pt">
+                       
+                        <canvas width="50" height="50"></canvas>
+                    </div>
+                    <div class="flex">
+                       <h3><strong>No reply</strong></h3> 
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-separator">
+    <div class="page-separator__text">Current Users</div>
+</div>
+
+<div class="card mb-lg-32pt">
+
+    <div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-employee-name" data-lists-values="[&quot;js-lists-values-employee-name&quot;, &quot;js-lists-values-employer-name&quot;, &quot;js-lists-values-projects&quot;, &quot;js-lists-values-activity&quot;, &quot;js-lists-values-earnings&quot;]">
+
+        <div class="card-header">
+            <form class="form-inline">
+                <label class="mr-sm-2 form-label" for="inlineFormFilterBy">Filter by:</label>
+                <input type="text" class="form-control search mb-2 mr-sm-2 mb-sm-0" id="inlineFormFilterBy" placeholder="Search ...">
+
+                <!-- <label class="sr-only" for="inlineFormRole">Role</label>
+                <select id="inlineFormRole" class="custom-select mb-2 mr-sm-2 mb-sm-0">
+                    <option value="All Roles">All Roles</option>
+                </select> -->
+
+                
+
+                <!-- <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+<input type="checkbox" class="custom-control-input" id="inlineFormPurchase">
+<label class="custom-control-label" for="inlineFormPurchase">Made a Purchase?</label>
+</div> -->
+            </form>
+        </div>
+
+        <table class="table mb-0 thead-border-top-0 table-nowrap" id="main1" style="display: inline-table;">
+            <thead>
+                <tr>
+
+                    <th style="width: 18px;" class="pr-0">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input js-toggle-check-all" data-target="#staff" id="customCheckAllstaff" data-domfactory-upgraded="toggle-check-all">
+                            <label class="custom-control-label" for="customCheckAllstaff"><span class="text-hide">Toggle all</span></label>
+                        </div>
+                    </th>
+
+                    <th>
+                        <a href="javascript:void(0)" class="sort asc" data-sort="js-lists-values-employee-name">Subject</a>
+                    </th>
+
+                    <th style="width: 150px;">
+                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-employer-name">Ticket ID</a>
+                    </th>
+
+                    <th class="text-center" style="width: 48px;">
+                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-projects">Priority</a>
+                    </th>
+
+                    <th style="width: 37px;">Status</th>
+
+                    
+                    <th style="width: 24px;" class="pl-0"></th>
+                </tr>
+            </thead>
+            <tbody class="list" id="staff"><tr>
+
+                 
+                {% for i in data %}
+                    <td>
+
+                        <div class="media flex-nowrap align-items-center" style="white-space: nowrap;">
+                            <div class="avatar avatar-32pt mr-8pt">
+
+                                <span class="avatar-title rounded-circle">{{i.ticket_id}}</span>
+
+                            </div>
+                            <div class="media-body">
+
+                                <div class="d-flex flex-column">
+                                    <p class="mb-0"><strong class="js-lists-values-employee-name">{{i.username}}</strong></p>
+                                    <small class="js-lists-values-employee-email text-50"></small>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </td>
+
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <a href="#" class="text-warning"><i class="material-icons mr-8pt">star</i></a>
+                            <a href="#" class="text-70"><span class="js-lists-values-employer-name">{{i.subject}}</span></a>
+                        </div>
+                    </td>
+
+                    <td class="text-center js-lists-values-projects small">{{forloop.counter}}</td>
+
+                    <td>
+                        {% if i.priority == 0 %}
+
+                        <a href="#" class="chip chip-outline-secondary">Normal</a>
+                        {% elif i.priority == 1 %}
+                        <a href="#" class="chip chip-outline-secondary">Important</a>
+                        {% else %}
+                        <a href="#" class="chip chip-outline-secondary">Urgent</a>
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+                        {% if i.status == 0 %}
+
+                        <a href="#" class="chip chip-outline-secondary">Solved</a>
+                        {% elif i.status == 1 %}
+                        <a href="#" class="chip chip-outline-secondary">Under Process</a>
+                        {% else %}
+                        <a href="#" class="chip chip-outline-secondary">No Reply</a>
+                        {% endif %}
+
+                    </td>
+                   
+                    <!-- <td class="text-right pl-0">
+                        <a href="#" class="text-50"><i class="material-icons">more_vert</i></a>
+                    </td> -->
+                </tr>
+                {% endfor %}
+            
+            </tbody>
+        </table>
+
+        <table class="table mb-0 thead-border-top-0 table-nowrap" id="main2" style="display: none;">
+            <thead>
+                <tr>
+
+                    <th style="width: 18px;" class="pr-0">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input js-toggle-check-all" data-target="#staff" id="customCheckAllstaff" data-domfactory-upgraded="toggle-check-all">
+                            <label class="custom-control-label" for="customCheckAllstaff"><span class="text-hide">Toggle all</span></label>
+                        </div>
+                    </th>
+
+                    <th>
+                        <a href="javascript:void(0)" class="sort asc" data-sort="js-lists-values-employee-name">Subject</a>
+                    </th>
+
+                    <th style="width: 150px;">
+                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-employer-name">Ticket ID</a>
+                    </th>
+
+                    <th class="text-center" style="width: 48px;">
+                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-projects">Priority</a>
+                    </th>
+
+                    <th style="width: 37px;">Status</th>
+
+                    
+                    <th style="width: 24px;" class="pl-0"></th>
+                </tr>
+            </thead>
+            <tbody class="list" id="staff"><tr>
+
+                 
+                {% for i in data %}
+                {% if i.status == 0 %}
+                    <td>
+
+                        <div class="media flex-nowrap align-items-center" style="white-space: nowrap;">
+                            <div class="avatar avatar-32pt mr-8pt">
+
+                                <span class="avatar-title rounded-circle">{{i.ticket_id}}</span>
+
+                            </div>
+                            <div class="media-body">
+
+                                <div class="d-flex flex-column">
+                                    <p class="mb-0"><strong class="js-lists-values-employee-name">{{i.username}}</strong></p>
+                                    <small class="js-lists-values-employee-email text-50"></small>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </td>
+
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <a href="#" class="text-warning"><i class="material-icons mr-8pt">star</i></a>
+                            <a href="#" class="text-70"><span class="js-lists-values-employer-name">{{i.subject}}</span></a>
+                        </div>
+                    </td>
+
+                    <td class="text-center js-lists-values-projects small">{{forloop.counter}}</td>
+
+                    <td>
+                        {% if i.priority == 0 %}
+
+                        <a href="#" class="chip chip-outline-secondary">Normal</a>
+                        {% elif i.priority == 1 %}
+                        <a href="#" class="chip chip-outline-secondary">Important</a>
+                        {% else %}
+                        <a href="#" class="chip chip-outline-secondary">Urgent</a>
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+                        {% if i.status == 0 %}
+
+                        <a href="#" class="chip chip-outline-secondary">Solved</a>
+                        {% elif i.status == 1 %}
+                        <a href="#" class="chip chip-outline-secondary">Under Process</a>
+                        {% else %}
+                        <a href="#" class="chip chip-outline-secondary">No Reply</a>
+                        {% endif %}
+
+                    </td>
+                   
+                    <!-- <td class="text-right pl-0">
+                        <a href="#" class="text-50"><i class="material-icons">more_vert</i></a>
+                    </td> -->
+                </tr>
+                {% endif%}
+                {% endfor %}
+            
+            </tbody>
+        </table>
+        <table class="table mb-0 thead-border-top-0 table-nowrap" id="main3" style="display: none;">
+            <thead>
+                <tr>
+
+                    <th style="width: 18px;" class="pr-0">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input js-toggle-check-all" data-target="#staff" id="customCheckAllstaff" data-domfactory-upgraded="toggle-check-all">
+                            <label class="custom-control-label" for="customCheckAllstaff"><span class="text-hide">Toggle all</span></label>
+                        </div>
+                    </th>
+
+                    <th>
+                        <a href="javascript:void(0)" class="sort asc" data-sort="js-lists-values-employee-name">Subject</a>
+                    </th>
+
+                    <th style="width: 150px;">
+                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-employer-name">Ticket ID</a>
+                    </th>
+
+                    <th class="text-center" style="width: 48px;">
+                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-projects">Priority</a>
+                    </th>
+
+                    <th style="width: 37px;">Status</th>
+
+                    
+                    <th style="width: 24px;" class="pl-0"></th>
+                </tr>
+            </thead>
+            <tbody class="list" id="staff"><tr>
+
+                 
+                {% for i in data %}
+                {% if i.status == 1 %}
+                    <td>
+
+                        <div class="media flex-nowrap align-items-center" style="white-space: nowrap;">
+                            <div class="avatar avatar-32pt mr-8pt">
+
+                                <span class="avatar-title rounded-circle">{{i.ticket_id}}</span>
+
+                            </div>
+                            <div class="media-body">
+
+                                <div class="d-flex flex-column">
+                                    <p class="mb-0"><strong class="js-lists-values-employee-name">{{i.username}}</strong></p>
+                                    <small class="js-lists-values-employee-email text-50"></small>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </td>
+
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <a href="#" class="text-warning"><i class="material-icons mr-8pt">star</i></a>
+                            <a href="#" class="text-70"><span class="js-lists-values-employer-name">{{i.subject}}</span></a>
+                        </div>
+                    </td>
+
+                    <td class="text-center js-lists-values-projects small">{{forloop.counter}}</td>
+
+                    <td>
+                        {% if i.priority == 0 %}
+
+                        <a href="#" class="chip chip-outline-secondary">Normal</a>
+                        {% elif i.priority == 1 %}
+                        <a href="#" class="chip chip-outline-secondary">Important</a>
+                        {% else %}
+                        <a href="#" class="chip chip-outline-secondary">Urgent</a>
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+                        {% if i.status == 0 %}
+
+                        <a href="#" class="chip chip-outline-secondary">Solved</a>
+                        {% elif i.status == 1 %}
+                        <a href="#" class="chip chip-outline-secondary">Under Process</a>
+                        {% else %}
+                        <a href="#" class="chip chip-outline-secondary">No Reply</a>
+                        {% endif %}
+
+                    </td>
+                   
+                    <!-- <td class="text-right pl-0">
+                        <a href="#" class="text-50"><i class="material-icons">more_vert</i></a>
+                    </td> -->
+                </tr>
+                {% endif%}
+                {% endfor %}
+            
+            </tbody>
+        </table>
+        <table class="table mb-0 thead-border-top-0 table-nowrap" id="main4" style="display: none;">
+            <thead>
+                <tr>
+
+                    <th style="width: 18px;" class="pr-0">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input js-toggle-check-all" data-target="#staff" id="customCheckAllstaff" data-domfactory-upgraded="toggle-check-all">
+                            <label class="custom-control-label" for="customCheckAllstaff"><span class="text-hide">Toggle all</span></label>
+                        </div>
+                    </th>
+
+                    <th>
+                        <a href="javascript:void(0)" class="sort asc" data-sort="js-lists-values-employee-name">Subject</a>
+                    </th>
+
+                    <th style="width: 150px;">
+                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-employer-name">Ticket ID</a>
+                    </th>
+
+                    <th class="text-center" style="width: 48px;">
+                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-projects">Priority</a>
+                    </th>
+
+                    <th style="width: 37px;">Status</th>
+
+                    
+                    <th style="width: 24px;" class="pl-0"></th>
+                </tr>
+            </thead>
+            <tbody class="list" id="staff"><tr>
+
+                 
+                {% for i in data %}
+                {% if i.status == 2 %}
+                    <td>
+
+                        <div class="media flex-nowrap align-items-center" style="white-space: nowrap;">
+                            <div class="avatar avatar-32pt mr-8pt">
+
+                                <span class="avatar-title rounded-circle">{{i.ticket_id}}</span>
+
+                            </div>
+                            <div class="media-body">
+
+                                <div class="d-flex flex-column">
+                                    <p class="mb-0"><strong class="js-lists-values-employee-name">{{i.username}}</strong></p>
+                                    <small class="js-lists-values-employee-email text-50"></small>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </td>
+
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <a href="#" class="text-warning"><i class="material-icons mr-8pt">star</i></a>
+                            <a href="#" class="text-70"><span class="js-lists-values-employer-name">{{i.subject}}</span></a>
+                        </div>
+                    </td>
+
+                    <td class="text-center js-lists-values-projects small">{{forloop.counter}}</td>
+
+                    <td>
+                        {% if i.priority == 0 %}
+
+                        <a href="#" class="chip chip-outline-secondary">Normal</a>
+                        {% elif i.priority == 1 %}
+                        <a href="#" class="chip chip-outline-secondary">Important</a>
+                        {% else %}
+                        <a href="#" class="chip chip-outline-secondary">Urgent</a>
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+                        {% if i.status == 0 %}
+
+                        <a href="#" class="chip chip-outline-secondary">Solved</a>
+                        {% elif i.status == 1 %}
+                        <a href="#" class="chip chip-outline-secondary">Under Process</a>
+                        {% else %}
+                        <a href="#" class="chip chip-outline-secondary">No Reply</a>
+                        {% endif %}
+
+                    </td>
+                   
+                    <!-- <td class="text-right pl-0">
+                        <a href="#" class="text-50"><i class="material-icons">more_vert</i></a>
+                    </td> -->
+                </tr>
+                {% endif%}
+                {% endfor %}
+            
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="card-footer p-8pt">
+
+        <ul class="pagination justify-content-start pagination-xsm m-0">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true" class="material-icons">chevron_left</span>
+                    <span>Prev</span>
+                </a>
+            </li>
+            <li class="page-item dropdown">
+                <a class="page-link dropdown-toggle" data-toggle="dropdown" href="#" aria-label="Page">
+                    <span>1</span>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item active">1</a>
+                    <a href="#" class="dropdown-item">2</a>
+                    <a href="#" class="dropdown-item">3</a>
+                    <a href="#" class="dropdown-item">4</a>
+                    <a href="#" class="dropdown-item">5</a>
+                </div>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span>Next</span>
+                    <span aria-hidden="true" class="material-icons">chevron_right</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <!-- <div class="card-body bordet-top text-right">
+15 <span class="text-50">of 1,430</span> <a href="#" class="text-50"><i class="material-icons ml-1">arrow_forward</i></a>
+</div> -->
+
+</div>
+<script>
+    function answered()
+{
+    
+    document.getElementById('main1').style.display='none';
+    document.getElementById('main2').style.display='inline-table';
+    document.getElementById('main3').style.display='none';
+    document.getElementById('main4').style.display='none';
+}
+function underprocess()
+{
+    
+    document.getElementById('main2').style.display='none';
+    document.getElementById('main1').style.display='none';
+    document.getElementById('main3').style.display='inline-table';
+    document.getElementById('main4').style.display='none';
+}
+function noreply()
+{
+
+    
+    document.getElementById('main2').style.display='none';
+    document.getElementById('main1').style.display='none';
+    document.getElementById('main3').style.display='none';
+    document.getElementById('main4').style.display='inline-table';
+}
+</script>
+{% endblock %}

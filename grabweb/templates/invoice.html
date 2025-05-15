@@ -1,0 +1,102 @@
+{% extends "dashboardmaster.html" %}
+{% block title %}
+  GrabWebHost -Invoice
+{% endblock %}
+{% block content %}
+<div class="border-bottom-2 py-32pt position-relative z-1">
+                    <div class="container-fluid page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+                        <div class="flex d-flex flex-column flex-sm-row align-items-center">
+
+                            <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                                <h2 class="mb-0">Invoice</h2>
+
+                                <ol class="breadcrumb p-0 m-0">
+                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+
+                                  
+
+                                    <li class="breadcrumb-item active">
+
+                                        invoice
+
+                                    </li>
+
+                                </ol>
+
+                            </div>
+
+                           
+
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div class="container-fluid page__container">
+                    <form ">
+                        <div class="row">
+                            <div class="col-lg-9 pr-lg-0">
+
+                                <div class="page-section">
+                                    <h4>Payments</h4>
+
+                                   
+
+                                    <div class="page-separator">
+                                        <div class="page-separator__text">Payment History</div>
+                                    </div>
+
+                                    <div class="card table-responsive">
+                                        <table class="table table-flush table-nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th>Invoice no.</th>
+                                                    <th>Date</th>
+                                                    <th class="text-center">Amount</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for i in invoice %}
+                                                <tr>
+                                                    <td><a  class="text-underline">{{i.invoice_no}}</a></td>
+                                                    <td>{{i.generates_date}}</td>
+                                                    <td class="text-center"> {% widthratio i.invoice_total 100 1 %}</td>
+                                                    <td class="text-right">
+                                                        <div class="d-inline-flex align-items-center">
+                                                            <a href="/currentinvoice?&paymentid={{i.checksign}}" class="btn btn-sm btn-outline-secondary mr-16pt">View invoice <i class="icon--right material-icons">keyboard_arrow_right</i></a>
+                                                            {% if i.status == 0 %}
+                                                            <a href="#" class="btn btn-sm btn-outline-secondary">UnPaid </a>
+                                                            {% else %}
+                                                            <a href="#" class="btn btn-sm btn-outline-secondary">Paid </a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+
+                                               
+                                               
+
+                                               
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3 page-nav">
+                                <div class="page-section pt-lg-112pt">
+                                    <nav class="nav page-nav__menu">
+                                        <a class="nav-link" >Invoices</a>
+                                       
+                                    </nav>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+{% endblock %}

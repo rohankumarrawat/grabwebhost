@@ -1,0 +1,456 @@
+{% extends "master.html" %}
+{% block title %}
+  GrabWebHost -IT Solutions at just one place
+{% endblock %}
+{% block content %}
+
+<style>
+      .po {
+  position: absolute;
+  left: 80px;
+  top: 190px;
+}
+.po1 {
+  position: absolute;
+  left: 80px;
+  top: 220px;
+}
+.po2 {
+  position: absolute;
+  left: 80px;
+  top: 400px;
+}
+.po3 {
+  position: absolute;
+  left: 80px;
+  top: 450px;
+}
+    /* Importing fonts from Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Reseting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #ecf0f3;
+}
+
+.wrapper {
+    max-width: 350px;
+    min-height: 500px;
+    margin: 80px auto;
+    padding: 40px 30px 30px 30px;
+    background-color: #ecf0f3;
+    border-radius: 15px;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+}
+
+.logo {
+    width: 80px;
+    margin: auto;
+}
+
+.logo img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px #5f5f5f,
+        0px 0px 0px 5px #ecf0f3,
+        8px 8px 15px #a7aaa7,
+        -8px -8px 15px #fff;
+}
+
+.wrapper .name {
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 1.3px;
+    padding-left: 10px;
+    color: #555;
+}
+
+.wrapper .form-field input {
+    width: 100%;
+    display: block;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.2rem;
+    color: #666;
+    padding: 10px 15px 10px 10px;
+    /* border: 1px solid red; */
+}
+
+.wrapper .form-field {
+    padding-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+}
+
+.wrapper .form-field .fas {
+    color: #555;
+}
+
+.wrapper .btn {
+    box-shadow: none;
+    width: 100%;
+    height: 40px;
+    background-color: #03A9F4;
+    color: #fff;
+    border-radius: 25px;
+    box-shadow: 3px 3px 3px #b1b1b1,
+        -3px -3px 3px #fff;
+    letter-spacing: 1.3px;
+}
+
+.wrapper .btn:hover {
+    background-color: #039BE5;
+}
+
+.wrapper a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: #03A9F4;
+}
+
+.wrapper a:hover {
+    color: #039BE5;
+}
+
+@media(max-width: 380px) {
+    .wrapper {
+        margin: 30px 20px;
+        padding: 40px 15px 15px 15px;
+    }
+
+</style>
+        <div class="no-bottom no-top" id="content">
+            
+            <!-- revolution slider begin -->
+           
+           <section>
+            <div class="d-none  d-lg-block d-xl-block" style="background-image: url('/static/bc.png'); 
+  background-size:cover">
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 p-5">
+                        <h4 class="po">Best IT Services Providing Website</h4>
+                        <h1 class="po1">Secure , <span style="color: #fac231;"> Fast</span> <br> and Reliable NVME<br> SSD Hosting</h1>
+                        <h5 class="po2">We are running our server on fastest nvme ssd technology with <br> 20x Faster than normal server</h5>
+                        <a class="btn-custom po3" href="/sharedhosting/"> Get Hosting</a>
+                        </div>
+                    <div class="col-4">
+                        {% if user.is_authenticated %}
+                        <div class="wrapper">
+                            <div class="logo">
+                                <img src="/static/images/gbl.png" alt="grabwebhost">
+                            </div>
+                            <div class="text-center mt-4 name">
+                                GrabWebHost
+                            </div>
+                            <div class="text-center mt-4 name">
+                                Welcome Back 
+                                <div class="p-3">
+                                <span class="p-1"  style="color: #fac231;"> {{user}}</span> 
+                               
+                                </div>
+                            </div>
+
+                            <div class="p-5">
+                               <a href="/dashboard" class="btn mt-3 "> Dashboard</a>
+                               <a href="/contact" class="btn mt-3 "> Contact</a>
+                            </div>
+                           
+                        </div>
+                        
+            
+    {% else %}
+    
+    <div class="wrapper">
+           {% for message in messages  %}            
+     
+        <div class="alert alert-soft-warning mb-lg-32pt">
+          <div class="d-flex flex-wrap align-items-start">
+              <div class="flex" style="min-width: 180px">
+                  <small class="text-100">
+                      <strong>Notice :- {{message}}</strong><br>
+                  
+                  </small>
+              </div>
+          </div>
+      </div>
+    {% endfor %}    
+                            <div class="logo">
+                                <img src="/static/images/gbl.png" alt="grabwebhost">
+                            </div>
+                            <div class="text-center mt-4 name">
+                                GrabWebHost
+                            </div>
+                            <form method="post" action="" class="p-3 mt-3">{% csrf_token %}
+                                <div class="form-field d-flex align-items-center">
+                                    <span class="far fa-user"></span>
+                                    <input type="text" name="email"  placeholder="Email Id">
+                                </div>
+                                <div class="form-field d-flex align-items-center">
+                                    <span class="fas fa-key"></span>
+                                    <input type="password" name="password"  placeholder="Password">
+                                </div>
+                                <button class="btn mt-3 "> <i class="fa fa-lock"></i>Login</button>
+                            </form>
+                            <div class="text-center fs-6">
+                                <a href="/dashboard/forgot/">Forget password?</a> or <a href="/dashboard/register/">Sign up</a>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            </div>
+           </section>
+			
+
+            <section >
+              
+                <div  class="container ">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2>Hosting Features</h2>							
+                            <div class="spacer-20"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb30">
+                            <div class="feature-box-type-1">
+                                <i class="icon-alarmclock"></i>
+                                <div class="text">
+                                    <h3>Instant Activation</h3>We are committed to provide instant activation for  CPanel Hosting Services.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb30">
+                            <div class="feature-box-type-1 hover">
+                                <i class="icon-profile-male"></i>
+                                <div class="text">
+                                    <h3 class="">24/7 Support</h3>We are committed to provide best dedicated support Service,  Via WhatsAPP or Support Ticket.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb30">
+                            <div class="feature-box-type-1">
+                                <i class="icon-refresh"></i>
+                                <div class="text">
+                                    <h3>99.99 Uptime</h3>We are using Litespeed Server with cloud technology which provide higher Uptime .
+                                </div>
+                            </div>
+                        </div>
+						
+						 <div class="col-lg-4 col-md-6 mb30">
+                            <div class="feature-box-type-1">
+                                <i class="icon-tools-2"></i>
+                                <div class="text">
+                                    <h3>High Performance</h3>We are using NVME SSD Server and dedicated core which provide Us Higher Performance.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb30">
+                            <div class="feature-box-type-1">
+                                <i class="icon-layers"></i>
+                                <div class="text">
+                                    <h3 class="">Multiple Data Centers</h3>Our Servers are located all over the globe and we are commited to provide all location service.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb30">
+                            <div class="feature-box-type-1">
+                                <i class="icon-shield"></i>
+                                <div class="text">
+                                    <h3>Money Back Warranty</h3>We assureed to provide 100 Percent Money Bank Guarantee Within 7 days of servce Usage
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </section>
+
+            
+
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2>Service Features</h2>							
+                            <div class="spacer-20"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb30">
+                            <div class="feature-box-type-1">
+                                <i class="icon-alarmclock"></i>
+                                <div class="text">
+                                    <h3>Super Fast Delivery</h3>We are committed to provide super Fast Delivery as soon as we received the payment.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb30">
+                            <div class="feature-box-type-1 hover">
+                                <i class="icon-profile-male"></i>
+                                <div class="text">
+                                    <h3 class="">24/7 Support</h3>We are committed to provide best dedicated support Service, Via WhatsAPP or Support Ticket..
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb30">
+                            <div class="feature-box-type-1">
+                                <i class="icon-refresh"></i>
+                                <div class="text">
+                                    <h3>Free Modification</h3>We do free Modification once we Delivery the Product Within 7 working days. 
+                                </div>
+                            </div>
+                        </div>
+						
+						 <div class="col-lg-4 col-md-6 mb30">
+                            <div class="feature-box-type-1">
+                                <i class="icon-tools-2"></i>
+                                <div class="text">
+                                    <h3>Dynamic Design</h3>We are committed to provide you the best dynamic design according to your requirement with multiple options.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb30">
+                            <div class="feature-box-type-1">
+                                <i class="icon-layers"></i>
+                                <div class="text">
+                                    <h3 class="">Admin Panel</h3>With our Web Development Feature We also Develop Admin Panel So that You can also customize your website by YourSelf .
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb30">
+                            <div class="feature-box-type-1">
+                                <i class="icon-shield"></i>
+                                <div class="text">
+                                    <h3>Bugg Free Development</h3>We are committed to provide you Bug Free Safe Development which leds to high Web Performance and optimized Website Speed.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section >
+                <div class="container">
+                    <div class="row">
+						<div class="col-md-12 text-center">
+                            <h2>FAQ</h2>							
+                            <div class="spacer-20"></div>
+                        </div>
+                        <div class="col-md-6 mb30">
+							<div class="box-highlight">
+										<div class="heading text-center text-white"><h3>General</h3></div>
+										<div class="content">
+											
+											<div class="accordion">
+                                <div class="accordion-section">
+                                    <div class="accordion-section-title" data-tab="#accordion-1">
+                                        How do I get started with web hosting?
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-1">
+                                        <p>First, Select Your Package and Buy now if you face any kind of difficulty than u can chat with us , then after payment you package will get automatically activated</p>
+                                    </div>
+                                    <div class="accordion-section-title" data-tab="#accordion-2">
+                                        What is difference for each plan?
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-2">
+                                        <p>The Main Diffrence between each plan is NVME SSD Storage,Number of emails, Bandwidth.</p>
+                                    </div>
+                                    <div class="accordion-section-title" data-tab="#accordion-3">
+                                        What kind of web hosting do I need?
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-3">
+                                        <p>It fully depends on you if you use php or html language in development than its fine with our Shared Hosting but if you require development like django Web developent Then  you need to buy our django Hosting.</p>
+                                    </div>
+                                    <div class="accordion-section-title" data-tab="#accordion-4">
+                                        Why do I need domain name?
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-4">
+                                        <p>A domain name gives your business instant credibility and puts you in the same online marketplace as your largest competitors.</p>
+                                    </div>
+                                    <div class="accordion-section-title" data-tab="#accordion-5">
+                                        What my website protected from hackers?
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-5">
+                                        <p>Yes Your Website is fully protected from hacker we are using multi lavel firewall system which will protect your server from Hackers.</p>
+                                    </div>
+                                    <div class="accordion-section-title" data-tab="#accordion-6">
+                                        How do I backup my website?
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-6">
+                                        <p>The backup system from our panel is very is even we are using JetBackup which provide batter backup system.</p>
+                                    </div>
+                                </div>
+                            </div>
+											
+										</div>
+									</div>
+                        </div>
+						
+						<div class="col-md-6 mb30">
+							<div class="box-highlight s2">
+										<div class="heading text-center text-white"><h3>Advanced Topics</h3></div>
+										<div class="content">
+											
+											<div class="accordion">
+                                <div class="accordion-section">
+                                    <div class="accordion-section-title" data-tab="#accordion-b-1">
+                                        Which kind of WebServer is GrabWebHost Providing ?
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-b-1">
+                                        <p>We are currently Providing the fastest Web Server which is Litespeed WebServer.</p>
+                                    </div>
+                                    <div class="accordion-section-title" data-tab="#accordion-b-2">
+                                        Will My account suspended/terminated if i forgot to pay?
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-b-2">
+                                        <p>Our billing System Remind you 10 days Before your payment by sending mail althogh if you forgot to pay we don't suspend Your account for further 5 Days.</p>
+                                    </div>
+                                    <div class="accordion-section-title" data-tab="#accordion-b-3">
+                                        Which type of Harware do GrabWebHost Using?
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-b-3">
+                                        <p>We are using NVME SSD Which is 10X Faster Than normal and Dedicated Core Which Provide Higher Performance.</p>
+                                    </div>
+                                    <div class="accordion-section-title" data-tab="#accordion-b-4">
+                                        Is Domain free with Hosting?
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-b-4">
+                                        <p>Yes We do offer free domain with 1 year Subscription.</p>
+                                    </div>
+                                    <div class="accordion-section-title" data-tab="#accordion-b-5">
+                                        How to get support?
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-b-5">
+                                        <p>We are committed to provide 24X7 Support through Direct mobile Call ,WhatsAPP Chat and Ticket Support.</p>
+                                    </div>
+                                    <div class="accordion-section-title" data-tab="#accordion-b-6">
+                                        Is my provides information is safe?
+                                    </div>
+                                    <div class="accordion-section-content" id="accordion-b-6">
+                                        <p>Yes, All those information that you provide to us is safe we don't offer our data to any company for marketting as we do belive in privacy.</p>
+                                    </div>
+                                </div>
+                            </div>
+											
+										</div>
+									</div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+
+            </div>
+{% endblock %}
+          

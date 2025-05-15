@@ -1,0 +1,94 @@
+{% extends "master.html" %}
+{% block title %}
+  GrabWebHost -Contact Us
+{% endblock %}
+{% block content %}
+ <!-- content begin -->
+        <div class="no-bottom no-top" id="content">
+            <div id="top"></div>
+            <!-- revolution slider begin -->
+            <!-- section begin -->
+            <section class="relative no-top no-bottom text-light" data-bgimage="url(images/background/10.jpg)" data-stellar-background-ratio=".2">
+
+                <div class="overlay-gradient t70">
+                    <div class="center-y">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 offset-md-2 text-center">
+                                <div class="col text-center">
+									<div class="spacer-single"></div>
+									<h1 class="no-bottom">Contact Us</h1>
+									<p class="lead">Ask any questions using form below.</p>
+                                </div>
+                                </div>
+								
+								 <div class="spacer-10"></div>
+								 
+						<div class="col-lg-8 mb-sm-30">			
+							<form   class="form-s1" method="post" action=''>{% csrf_token %}
+
+                                    <div class="field-set">
+                                        <input type='text' name='name'  class="form-control" placeholder="Your Name" required>
+                                    </div>
+
+                                    <div class="field-set">
+                                        <input type='text' name='email' class="form-control" placeholder="Your Email" required>
+                                    </div>
+
+                                    <div class="field-set">
+                                        <input type='text' name='phone' class="form-control" placeholder="Your Phone" required>
+                                    </div>
+
+                                    <div class="field-set">
+                                        <textarea name='message'  class="form-control" placeholder="Your Message" required></textarea>
+                                    </div>
+
+                                    <div class="spacer-half"></div>
+
+                                    <div>
+                                       <button  type='submit'  class="btn btn-custom">Submit</button> 
+                                    </div>
+                                  
+                                    
+                                    
+{% for message in messages  %}            
+     
+            <div id='mail_success' class='success'>
+                          <strong>Notice :- {{message}}</strong><br>
+          </div>
+        {% endfor %}    
+
+                                </form>
+						</div>
+						<div class="col-lg-4 mb30">
+											 
+                                            <div class="padding40 bg-gradient-to-right-2 text-light rounded">
+												<h3>Contact Details</h3>
+												<address class="s1">												
+												
+												<span><i class="fa fa-phone fa-lg"></i>+91 9354519271</span>
+												<span><i class="fa fa-envelope-o fa-lg"></i><a href="mailto:info@grabwebhost.in">info@grabwebhost.in</a></span>
+											
+												
+											</address>
+											</div>
+											
+											<div class="spacer-30"></div>
+											
+											
+							
+						</div>
+								
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <!-- section close -->
+            
+        </div>
+    
+
+{% endblock %}
+          

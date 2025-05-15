@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Payment Processing</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+		}
+
+		.payment-form {
+			display: inline-block;
+			border: 2px solid #ccc;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+			background-color: #fff;
+			margin: 50px auto;
+		}
+
+		.payment-form label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		.payment-form input[type=text], .payment-form input[type=number], .payment-form select {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 2px solid #ccc;
+			border-radius: 5px;
+			font-size: 16px;
+			box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+			outline: none;
+		}
+
+		.payment-form button[type=submit] {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		.payment-form button[type=submit]:hover {
+			background-color: #3e8e41;
+		}
+
+		.payment-loader {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			z-index: 9999;
+		}
+
+		.payment-loader img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 100px;
+			height: 100px;
+		}
+
+		.payment-success {
+			display: none;
+			font-size: 24px;
+			color: #4CAF50;
+			margin-top: 50px;
+		}
+
+		.payment-error {
+			display: none;
+			font-size: 24px;
+			color: #FF0000;
+			margin-top: 50px;
+		}
+	</style>
+	<style>
+		.loader {
+			display: block;
+			margin: 50px auto;
+			width: 50px;
+			height: 50px;
+			background-image: url("https://media.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif");
+			background-repeat: no-repeat;
+			background-size: cover;
+			animation: spin 1s linear infinite;
+		}
+
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+	</style>
+</head>
+<body>
+	<div class="payment-form">
+		<h2>Payment Processing</h2>
+		<div class="loader"></div>
+		<form id="done" method="post" action="">{% csrf_token %}
+		     <input id="first" type=hidden name="id12"  value="" >
+		      <input id="second" type=hidden name="orderid"  value="" >
+		       <input id="third" type=hidden name="signature"  value="" >
+		</form>
+		<form id="error" method="post" action="">{% csrf_token %}
+		     <input id="name" type=hidden name="name"  value="no" >
+		</form>
+	</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+
+
+var options = {
+    "key": "rzp_live_BUG1RfmhfT0F5v",
+    
+    "amount":  "{{payment.amount}}",
+    "currency": "INR",
+    "name": "GrabWebHost",
+    "description": "Transaction",
+    "image": "https://grabwebhost.in/static/images/logo.png",
+    "order_id": "{{payment.id}}", 
+    "handler": function (response){
+        
+        document.getElementById("first").value = response.razorpay_payment_id;
+        document.getElementById("second").value = response.razorpay_order_id;
+        document.getElementById("third").value = response.razorpay_signature;
+        document.getElementById("done").submit();
+    },
+  
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        
+       
+        document.getElementById("error").submit();
+      
+});
+window.onload = function(e){
+    
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+
+</body>
+</html>

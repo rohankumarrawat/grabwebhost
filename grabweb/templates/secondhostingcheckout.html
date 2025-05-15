@@ -1,0 +1,195 @@
+{% extends "dashboardmaster.html" %}
+{% block title %}
+  GrabWebHost -Select Domain
+{% endblock %}
+{% block content %}
+<div class="border-bottom-2 py-32pt position-relative z-1">
+    <div class="container-fluid page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+        <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+
+            <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                <h2 class="mb-0">Domain</h2>
+
+                <ol class="breadcrumb p-0 m-0">
+                    <li class="breadcrumb-item active"><a href="/">Home</a></li>
+
+                    <li class="breadcrumb-item active">
+
+                       Hosting Checkout
+
+                    </li>
+
+                </ol>
+
+            </div>
+
+          
+
+        </div>
+
+
+        <div class="row"
+             role="tablist">
+           
+          
+        </div>
+
+    </div>
+    </div>
+
+<br>
+<div class="page-separator">
+    <div class="page-separator__text">Get/Register Domain</div>
+</div>
+<div class="row">
+                            <div class="col-lg-9 pr-lg-0">
+
+                                <div class="page-section">
+                                   
+
+                                    <div class="row card-group-row mb-35pt">
+                                        <div class="col-lg-6 col-sm-6 card-group-row__col">
+
+                                            <div class="card card-group-row__card text-center o-hidden card--raised ">
+
+                                                <span class="corner-ribbon corner-ribbon--default-right-top corner-ribbon--shadow bg-accent text-white">Start</span>
+
+                                                <div class="card-body d-flex flex-column">
+                                                    <div class="flex-grow mb-16pt">
+                                                        <span class="w-64 h-64 icon-holder icon-holder--outline-accent rounded-circle d-inline-flex mb-16pt">
+                                                            <i class="material-icons">person</i>
+                                                        </span>
+                                                        <h4 class="mb-8pt">Register Domain</h4>
+                                                        <p class="text-70 mb-0">Get a new name for your Business</p>
+                                                    </div>
+                                                    
+                                                    
+                                                </div>
+                                                <div class="card-footer">
+                                                    <button  onclick="new12()" class="btn btn-accent">Get started</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-6 col-sm-6 card-group-row__col">
+
+                                            <div class="card card-group-row__card text-center o-hidden ">
+
+                                                <div class="card-body d-flex flex-column">
+                                                    <div class="flex-grow mb-16pt">
+                                                        <span class="w-64 h-64 icon-holder icon-holder--outline-secondary rounded-circle d-inline-flex mb-16pt">
+                                                            <i class="material-icons">group</i>
+                                                        </span>
+                                                        <h4 class="mb-8pt">Already Have Domain?</h4>
+                                                        <p class="text-70 mb-0">Get Started with existing Domain</p>
+                                                    </div>
+                                                  
+                                                </div>
+                                                <div class="card-footer">
+                                                    <button onclick="already12()" class="btn btn-outline-secondary">Get started</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        
+                                         <div id='already19' class="col-lg-12 col-sm-6 card-group-row__col" style="display:none;">
+
+                                            <div id='already' class="card card-group-row__card text-center o-hidden mb-0"  >
+
+                                                <div class="card-body d-flex flex-column">
+                                                    <div class="flex-grow mb-16pt">
+                                                        <span class="w-64 h-64 icon-holder icon-holder--outline-secondary rounded-circle d-inline-flex mb-16pt">
+                                                            <i class="material-icons">business_center</i>
+                                                        </span>
+                                                        <h4 class="mb-8pt">Already Have Domain</h4>
+                                                       
+                                                    </div>
+                                                    <form method="post" action="">{% csrf_token %}
+                                                    <input type="text" class="form-control" id="alreadydomain" name="alreadydomain" placeholder="example.com">
+                                                    
+                                                   
+                                                </div>
+                                                <div class="card-footer">
+                                                    <button type="submit" class="btn btn-outline-secondary">Search</button>
+                                                    </form>  
+                                                </div>
+                                            </div>
+</div>
+                                        
+                                              {% for message in messages  %}            
+     
+        <div class="alert alert-soft-warning mb-lg-32pt">
+          <div class="d-flex flex-wrap align-items-start">
+              <div class="mr-8pt">
+                  <i class="material-icons">error</i>
+              </div>
+              <div class="flex" style="min-width: 180px">
+                  <small class="text-100">
+                      <strong>Notice :- {{message}}</strong><br>
+                  
+                  </small>
+              </div>
+          </div>
+      </div>
+    {% endfor %}    
+                                       
+                                         <div id='new19' class="col-lg-12 col-sm-6 card-group-row__col" style="display:none;">
+
+                                            <div id='already' class="card card-group-row__card text-center o-hidden mb-0"  >
+
+                                                <div class="card-body d-flex flex-column">
+                                                    <div class="flex-grow mb-16pt">
+                                                        <span class="w-64 h-64 icon-holder icon-holder--outline-secondary rounded-circle d-inline-flex mb-16pt">
+                                                            <i class="material-icons">business_center</i>
+                                                        </span>
+                                                        <h4 class="mb-8pt">Register New Domain</h4>
+                                                        
+                                                    </div>
+                                                    <form method="post" action="">{% csrf_token %}
+                                                    <input type="text" class="form-control" id="newdomain" name="newdomain" placeholder="example.com">
+                                                    <p class="d-flex justify-content-center align-items-center m-0">
+                                                        <span class="h4 m-0 font-weight-normal">₹</span>
+                                                        <span class="h1 m-0 font-weight-normal">799</span>
+                                                        <span class="h4 m-0 font-weight-normal">/ month</span>
+                                                    </p>
+                                                    <p class="lh-1 text-muted mb-0"></p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <button type='submit'  class="btn btn-outline-secondary">Search</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+</div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3 page-nav">
+                                <div class="page-section pt-lg-112pt">
+                                    <nav class="nav page-nav__menu">
+                                        <a class="nav-link">Select Package</a>
+                                        <a class="nav-link active">Domain</a>
+                                        <a class="nav-link">Payment Information</a>
+                                        <a class="nav-link">Checkout</a>
+                                        <a class="nav-link">Invoice</a>
+                                    </nav>
+                           
+                                </div>
+                            </div>
+                        </div>
+<script>
+    function new12() {
+        
+  document.getElementById("new19").style.display = "block";
+  document.getElementById("already19").style.display = "none";
+}
+function already12() {
+  //code
+  document.getElementById("new19").style.display = "none";
+  document.getElementById("already19").style.display = "block";
+  
+}
+</script>
+
+{% endblock %}

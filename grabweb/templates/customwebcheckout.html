@@ -1,0 +1,165 @@
+
+
+{% extends "dashboardmaster.html" %}
+{% block title %}
+  GrabWebHost -Custom WebDevelopment
+{% endblock %}
+{% block content %}
+                <div class="py-32pt navbar-submenu">
+                    <div class="container-fluid page__container">
+                        <div class="progression-bar progression-bar--active-accent">
+                            <a href="pricing.html"
+                               class="progression-bar__item progression-bar__item--complete">
+                                <span class="progression-bar__item-content">
+                                    <i class="material-icons progression-bar__item-icon">done</i>
+                                    <span class="progression-bar__item-text h5 mb-0 text-uppercase">Web Development</span>
+                                </span>
+                            </a>
+                            <a href="boxed-signup.html"
+                               class="progression-bar__item progression-bar__item--complete progression-bar__item--active">
+                                <span class="progression-bar__item-content">
+                                    <i class="material-icons progression-bar__item-icon"></i>
+                                    <span class="progression-bar__item-text h5 mb-0 text-uppercase"> Custom Web Development</span>
+                                </span>
+                            </a>
+                            <a href="boxed-signup-payment.html"
+                               class="progression-bar__item">
+                                <span class="progression-bar__item-content">
+                                    <i class="material-icons progression-bar__item-icon"></i>
+                                    <span class="progression-bar__item-text h5 mb-0 text-uppercase">Checkout</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+   {% for message in messages  %}            
+     
+        <div class="alert alert-soft-warning mb-lg-32pt">
+          <div class="d-flex flex-wrap align-items-start">
+              <div class="mr-8pt">
+                  <i class="material-icons">error</i>
+              </div>
+              <div class="flex" style="min-width: 180px">
+                  <small class="text-100">
+                      <strong>Notice :- {{message}}</strong><br>
+                  
+                  </small>
+              </div>
+          </div>
+      </div>
+    {% endfor %}    
+                <div class=" py-32pt py-lg-64pt">
+                    <div class="container-fluid page__container">
+                        <div class="col-lg-10 p-0 mx-auto">
+                            <div class="row"> 
+                             
+                            <div id="login05" class="col-md-6 mb-24pt mb-md-0">
+                                    <form action="" method="post"> {% csrf_token %}  
+                                        
+                                        <div class="form-group">
+                                            <label class="form-label"
+                                                   for="email">Your email:</label>
+                                            <input id="email"
+                                                   type="email"
+                                                   class="form-control"
+                                                   name="email"
+                                                   placeholder="Your email address ..." required>
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="form-label"
+                                                   for="name">Your Name</label>
+                                            <input id="email"
+                                                   type="text"
+                                                   class="form-control"
+                                                   name="name"
+                                                   placeholder="Name" required>
+                                        </div>
+                                        <div class="form-group mb-24pt">
+                                            <label class="form-label"
+                                                   for="password">Number</label>
+                                            <input id="password"
+                                                   type="text"
+                                                   name="number"
+                                                   class="form-control"
+                                                   placeholder="Your Phone Number" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label"
+                                                   for="name">Website Type</label>
+                                            <input id="email"
+                                                   type="text"
+                                                   class="form-control"
+                                                   name="type"
+                                                   placeholder="Website Type" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label"
+                                                   for="name">Discription</label>
+                                                    <input id="email"
+                                                   type="text"
+                                                   class="form-control"
+                                                   name="Discription"
+                                                   placeholder="Discription" required  minlength="35" maxlength="300" size="100">
+                                           
+                                        </div>
+                                    
+                                        
+                                        <button type="submit" class="btn btn-accent">Submit Data</button>
+                                       
+                                    </form>
+                                    
+                                </div>
+                                
+                        
+                                <div class="col-md-6">
+                                    <div class="card mb-0">
+                                        <div class="card-body">
+                                            <h5> summary</h5>
+                                            <div class="d-flex mb-8pt">
+                                                <div class="flex"><strong class="text-70">Service</strong></div>
+                                                <strong>Custom WebDevelopment</strong>
+                                            </div>
+
+                                          
+
+                                         
+ <div class="d-flex mb-16pt pb-16pt border-bottom">
+                                                
+                                            </div>
+                                             <div class="d-flex mb-8pt">
+                                                <div class="flex"><strong class="text-70">SubTotal</strong></div>
+                                                <strong id="item-price">Not Generated</strong>
+                                            </div>
+                                          
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox"
+                                                       class="custom-control-input"
+                                                       checked
+                                                       id="topic-all">
+                                               <label class="custom-control-label"> Terms and conditions</label>
+                                              <a href="/tac/"> <small class="form-text text-muted">By checking here and continuing, I agree to the GrabWebHost Terms of Use</small></a> 
+                                            </div>
+                                               <div class="d-flex mb-16pt pb-16pt border-bottom">
+                                                
+                                            </div>
+                                           
+                                            
+                                       
+                                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+                
+
+
+
+
+
+
+{% endblock %}  
+            

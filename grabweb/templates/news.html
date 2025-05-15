@@ -1,0 +1,145 @@
+{% extends "dashboardmaster.html" %}
+{% block title %}
+  GrabWebHost -DashBoard
+{% endblock %}
+{% block content %}
+<div class="border-bottom-2 py-32pt position-relative z-1">
+    <div class="container-fluid page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+        <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+
+            <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                <h2 class="mb-0">News</h2>
+
+                <ol class="breadcrumb p-0 m-0">
+                    <li class="breadcrumb-item active"><a href="/">Home</a></li>
+
+                    <li class="breadcrumb-item active">
+
+                       News
+
+                    </li>
+
+                </ol>
+
+            </div>
+
+          
+
+        </div>
+
+
+        <div class="row"
+             role="tablist">
+           
+            <div class="col-auto border-left">
+                <h6 class="m-0">{{len1}}</h6>
+                <p class="text-50 mb-0 d-flex align-items-center">
+                    Total News
+                    <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_up</i>
+                </p>
+            </div>
+            <div class="col-auto border-left">
+                <a href="#"
+                   class="btn btn-accent">Login Logs</a>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+<br>
+
+
+
+
+  
+
+    <div class="card mb-lg-32pt">
+       
+        
+
+        <div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-date" data-lists-sort-desc="false" data-lists-values="[&quot;js-lists-values-name&quot;, &quot;js-lists-values-date&quot;]">
+
+            <table class="table mb-0 thead-border-top-0 table-nowrap">
+                <thead>
+                    <tr>
+                        <th>
+                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">News ID</a>
+                        </th>
+                       
+
+                        <th>
+                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">News</a>
+                        </th>
+                        <th>
+                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">Title</a>
+                        </th>
+                      
+                        <th style="width: 48px;">
+                            <a href="javascript:void(0)" class="sort asc" data-sort="js-lists-values-date">Date</a>
+                        </th>
+                       
+                        <th style="width: 24px;"></th>
+                    </tr>
+                </thead>
+                <tbody class="list" id="tasks">
+                    
+                    {% for i in post %}
+                    <tr class="selected">
+                        
+                        <td>
+
+                            <div class="d-flex align-items-center">
+                                <strong class="flex js-lists-values-name">{{i.news_id}}</strong>
+
+                  
+                               
+
+                            </div>
+
+                        </td>
+
+                        <td>
+
+                            <div class="d-flex align-items-center">
+                                <strong class="flex js-lists-values-name">{{i.newsdata}}</strong>
+
+                  
+                               
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+
+                              {{i.new_title}}
+
+                            </div>
+                        </td>
+                        <td>
+                            <small class="js-lists-values-date text-50">{{i.news_date}}</small>
+                        </td>
+                        
+                    </tr>
+                    {% endfor %}
+
+                        </tbody>
+            </table>
+        </div>
+
+        <div class="card-footer p-8pt">
+
+            
+
+        </div>
+      
+
+    </div>
+
+    
+
+    
+
+
+{% endblock %}

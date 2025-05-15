@@ -1,0 +1,166 @@
+{% extends "dashboardmaster.html" %}
+{% block title %}
+  GrabWebHost -DashBoard
+{% endblock %}
+{% block content %}
+<div class="border-bottom-2 py-32pt position-relative z-1">
+    <div class="container-fluid page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+        <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
+
+            <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                <h2 class="mb-0">Account</h2>
+
+                <ol class="breadcrumb p-0 m-0">
+                    <li class="breadcrumb-item active"><a href="/">Home</a></li>
+
+                    <li class="breadcrumb-item active">
+
+                       Account
+
+                    </li>
+
+                </ol>
+
+            </div>
+
+          
+
+        </div>
+        </div>
+
+</div>
+{% for message in messages  %}            
+     
+            <div class="alert alert-soft-warning mb-lg-32pt">
+              <div class="d-flex flex-wrap align-items-start">
+                  <div class="mr-8pt">
+                      <i class="material-icons">error</i>
+                  </div>
+                  <div class="flex" style="min-width: 180px">
+                      <small class="text-100">
+                          <strong>Notice :- {{message}}</strong><br>
+                      
+                      </small>
+                  </div>
+              </div>
+          </div>
+        {% endfor %}    
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-lg-9 pr-lg-0">
+
+            <div class="page-section">
+                <h4>Profile &amp; Privacy</h4>
+                <div class="list-group list-group-form">
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-3">Your photo</label>
+                            <div class="col-sm-9 media align-items-center">
+                             
+                                <div class="media-body">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="photo">
+                                        <label class="custom-file-label" >Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-3">Phone Number</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="phone" value="{{data.phone}}" placeholder="Your profile name ...">
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-3">Address</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="address" value="{{data.address}}">
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-3">About you</label>
+                            <div class="col-sm-9">
+                                <textarea rows="3" class="form-control" name="about" >{{data.about}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-3">Instagram</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="insta" value="{{data.insta}}" >
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-3">Twitter</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="twitter"  value="{{data.twitter}}" >
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-3">linkedIn</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="linkedIn" value="{{data.linkedIn}}" >
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" value="2" name="auth" class="custom-control-input" {{auth}}  id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">2 Step Verification</label>
+                            <small class="form-text text-muted">If checked, You you will need otp to login .</small>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" value="1" name="checkednews" class="custom-control-input" {{checkednews}}  id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Get News Notifications</label>
+                            <small class="form-text text-muted">If unchecked, You won't be able to get News Notifications.</small>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" value="1"  name="checkannouncement" class="custom-control-input" {{checkannouncement}}  id="customCheck2">
+                            <label class="custom-control-label" for="customCheck2">Get AnnounceMent Notifications</label>
+                            <small class="form-text text-muted">If unchecked, You won't be able to get AnnounceMent Notifications.</small>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-3 page-nav">
+            <div class="page-section pt-lg-112pt">
+                <nav class="nav page-nav__menu">
+                    <a class="nav-link" href="/dashboard/profile/">Basic Information</a>
+                    <a class="nav-link active" href="#">Profile &amp; Privacy</a>
+                   
+                 
+                </nav>
+                <div class="page-nav__content">
+                    <button type="submit" class="btn btn-accent">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

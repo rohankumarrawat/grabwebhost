@@ -1,0 +1,39 @@
+{% extends "master.html" %}
+{% block title %}
+  GrabWebHost -Domain
+{% endblock %}
+{% block content %}
+<div class="no-bottom no-top" id="content">
+    <div id="top"></div>
+    <!-- section begin -->
+    <section class="full-height relative no-top no-bottom text-light"  data-stellar-background-ratio=".2">
+
+        <div class="overlay-gradient t80 ">
+            <div class="center-y relative text-center" data-scroll-speed="4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="no-bottom">Search for your perfect domain name</h1>
+                            <p class="lead">Reserve your domain today before someone take it.</p>
+                        </div>
+                        <div class="col-md-8 offset-md-2">
+                            <form action="" class="row" id='form_sb' method="post" name="form_sb">{% csrf_token %}
+                                <div class="col text-center">
+                                    <div class="spacer-10"></div>
+                                    <input class="form-control" id='domain_name' name='domain' placeholder="enter domain name" type='text'> <a id="btn-submit" href="javascript:;" onclick="document.getElementById('form_sb').submit();"><i class="arrow_right"></i></a>
+         
+                                </div>
+                            </form>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- section close -->
+    
+
+{% endblock %}
+          

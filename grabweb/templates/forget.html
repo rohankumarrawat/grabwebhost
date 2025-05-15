@@ -1,0 +1,53 @@
+{% extends "dashboardmaster.html" %}
+{% block title %}
+  GrabWebHost -Forget Password
+{% endblock %}
+{% block content %}
+
+<div class=" pt-32pt pt-sm-64pt pb-32pt">
+    <div class="container-fluid page__container">
+        {% for message in messages  %}            
+     
+        <div class="alert alert-soft-warning mb-lg-32pt">
+          <div class="d-flex flex-wrap align-items-start">
+              <div class="mr-8pt">
+                  <i class="material-icons">error</i>
+              </div>
+              <div class="flex" style="min-width: 180px">
+                  <small class="text-100">
+                      <strong>Notice :- {{message}}</strong><br>
+                  
+                  </small>
+              </div>
+          </div>
+      </div>
+    {% endfor %}    
+        <form action="" method="post"
+              class="col-md-5 p-0 mx-auto">{% csrf_token %}
+            <div class="form-group">
+                <label class="form-label"
+                       for="email">Email:</label>
+                <input id="email"
+                       type="text"
+                       class="form-control"
+                       placeholder="{{email}}" name="email" >
+            </div>
+           
+            <div class="text-center">
+                <button type="submit" class="btn btn-accent">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="page-separator justify-content-center m-0">
+    <div class="page-separator__text">or Rigister</div>
+    <div class="page-separator__bg-top "></div>
+</div>
+<div class="bg-body pt-32pt pb-32pt pb-md-64pt text-center">
+    <div class="container-fluid page__container">
+        <a href="/dashboard/register/"
+           class="btn btn-secondary btn-block-xs">Register</a>
+        
+    </div>
+</div>
+{% endblock %}

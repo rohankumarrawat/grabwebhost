@@ -1,0 +1,55 @@
+{% extends "dashboardmaster.html" %}
+{% block title %}
+  GrabWebHost -Second Way Auth
+{% endblock %}
+{% block content %}
+
+<div class=" pt-32pt pt-sm-64pt pb-32pt">
+    <div class="container-fluid page__container">
+        {% for message in messages  %}            
+     
+        <div class="alert alert-soft-warning mb-lg-32pt">
+          <div class="d-flex flex-wrap align-items-start">
+              <div class="mr-8pt">
+                  <i class="material-icons">error</i>
+              </div>
+              <div class="flex" style="min-width: 180px">
+                  <small class="text-100">
+                      <strong>Notice :- {{message}}</strong><br>
+                  
+                  </small>
+              </div>
+          </div>
+      </div>
+    {% endfor %}    
+        <form action="" method="post"
+              class="col-md-5 p-0 mx-auto">{% csrf_token %}
+            <div class="form-group">
+                <label class="form-label"
+                       for="password">OTP:</label>
+                <input 
+                       type="text"
+                       class="form-control"
+                       placeholder="otp" name="otp" required>
+                
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-accent">Verify</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="page-separator justify-content-center m-0">
+    <div class="page-separator__text">or Resend</div>
+    <div class="page-separator__bg-top "></div>
+</div>
+<form method="post" accept="">{% csrf_token %}
+<div class="bg-body pt-32pt pb-32pt pb-md-64pt text-center">
+    <div class="container-fluid page__container">
+        <button type="submit"
+           class="btn btn-secondary btn-block-xs">Resend OTP</a>
+        
+    </div>
+</div>
+</form>
+{% endblock %}
