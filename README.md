@@ -190,13 +190,4 @@ This project is licensed under the **MIT License**.
 If you’re building a hosting platform or SaaS and need customization:
 **Let’s connect on LinkedIn or GitHub**
 
----
 
-If you want, I can also:
-
-* Add **Docker setup**
-* Write **Production deployment guide**
-* Create **WHMCS feature comparison**
-* Optimize README for **GitHub stars & SEO**
-
-Just tell me 👍
